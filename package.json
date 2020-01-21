@@ -1,0 +1,59 @@
+{
+  "name": "gatsby-starter-stripe",
+  "private": true,
+  "description": "A minimal starter to create a storefront with Stripe & Gatsby.",
+  "version": "0.1.0",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "clean": "gatsby clean",
+    "develop": "gatsby develop",
+    "start": "run-p start:**",
+    "start:app": "npm run develop",
+    "start:lambda": "netlify-lambda serve -c ./webpack.development.js src/functions",
+    "build": "run-p build:**",
+    "build:app": "gatsby build",
+    "build:lambda": "netlify-lambda build -c ./webpack.production.js src/functions"
+  },
+  "dependencies": {
+    "dotenv-webpack": "^1.7.0",
+    "gatsby": "^2.15.1",
+    "gatsby-image": "^2.2.15",
+    "gatsby-plugin-manifest": "^2.2.12",
+    "gatsby-plugin-offline": "^2.2.10",
+    "gatsby-plugin-react-helmet": "^3.1.5",
+    "gatsby-plugin-sharp": "^2.2.18",
+    "gatsby-source-filesystem": "^2.1.18",
+    "gatsby-source-stripe": "^3.0.3",
+    "gatsby-transformer-sharp": "^2.2.12",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-helmet": "^5.2.1",
+    "react-stripe-checkout": "^2.6.3",
+    "slug": "^1.1.0",
+    "stripe": "^6.36.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-gatsby-standard": "^2.2.0",
+    "eslint-plugin-react": "^7.14.3",
+    "http-proxy-middleware": "^0.19.1",
+    "netlify-lambda": "^1.6.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
