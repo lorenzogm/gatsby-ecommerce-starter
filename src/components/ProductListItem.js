@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
-const ProductThumbnail = ({ product }) => {
+const ProductListItem = ({ product }) => {
   const price = product.skus.reduce(
     (minPrice, sku) => (sku.price < minPrice ? sku.price : minPrice),
     product.skus[0].price,
@@ -11,7 +11,7 @@ const ProductThumbnail = ({ product }) => {
 
   return (
     <div key={product.id} style={{ breakInside: 'avoid' }}>
-      <Link to={`/buy/${product.slug}`} style={{ textDecoration: 'none' }}>
+      <Link to={`/${product.slug}`} style={{ textDecoration: 'none' }}>
         <div
           style={{
             maxWidth: 250,
@@ -36,8 +36,8 @@ const ProductThumbnail = ({ product }) => {
   )
 }
 
-ProductThumbnail.propTypes = {
+ProductListItem.propTypes = {
   product: PropTypes.object.isRequired,
 }
 
-export default ProductThumbnail
+export default ProductListItem

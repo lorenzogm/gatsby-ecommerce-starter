@@ -10,7 +10,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       node,
       name: 'slug',
-      value
+      value,
     })
   }
 }
@@ -46,12 +46,12 @@ exports.createPages = async ({ graphql, actions }) => {
       products[node.product.id] = node.fields.slug
     })
 
-    const productTemplate = path.resolve('src/templates/ProductTemplate.js')
+    const productDetailPage = path.resolve('src/pages/ProductDetailPage/index.js')
     Object.entries(products).forEach(([id, slug]) => {
       createPage({
-        path: 'buy/' + slug,
-        component: productTemplate,
-        context: { id }
+        path: slug,
+        component: productDetailPage,
+        context: { id },
       })
     })
   })

@@ -1,34 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import styled from 'styled-components'
 import Cart from './Cart'
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px auto;
+`
+
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      margin: `2rem`,
-    }}
-  >
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: '#555',
-            textDecoration: `none`,
-            fontWeight: 300,
-          }}
-        >
-          {siteTitle}
-        </Link>
+  <header>
+    <Container>
+      <h1>
+        <Link to="/">{siteTitle}</Link>
       </h1>
       <Cart />
-    </div>
+    </Container>
   </header>
 )
 

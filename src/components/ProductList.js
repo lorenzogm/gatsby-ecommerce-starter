@@ -1,17 +1,17 @@
 import React, { useContext } from 'react'
 import { ProductsContext } from './ProductsProvider'
-import ProductThumbnail from './ProductThumbnail'
+import ProductListItem from './ProductListItem'
 
-const Items = () => {
+const ProductList = () => {
   const { listProducts } = useContext(ProductsContext)
   const products = listProducts()
   return (
     <div style={{ columnCount: 3 }}>
       {products.map(product => (
-        <ProductThumbnail key={product.id} product={product} />
+        <ProductListItem key={product.id} product={product} />
       ))}
     </div>
   )
 }
 
-export default Items
+export default ProductList
