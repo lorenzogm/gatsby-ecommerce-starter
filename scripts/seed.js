@@ -3,17 +3,26 @@ const animals = require('./products/animals')
 
 const products = [...animals]
 
+const productSkip = ['TSH-MYF', 'BOD-MYF']
+const skuSkip = ['TSH-MYF-WHI-LAR', 'BOD-MYF-WHI-612']
+
 const seed = async () => {
   console.log('Starting...')
   console.log('')
   // delete all skus
   const skuList = await stripe.skus.list()
-  const skuListDelete = await Promise.all(skuList.data.map(sku => stripe.skus.del(sku.id)))
+  const skuListDelete = await Promise.all(
+    skuList.data.filter(sku => skuSkip.indexOf(sku.id) === -1).map(sku => stripe.skus.del(sku.id)),
+  )
   console.log(`${skuListDelete.length} skus deleted`)
 
   // delete all products
   const productList = await stripe.products.list()
-  const productListDelete = await Promise.all(productList.data.map(product => stripe.products.del(product.id)))
+  const productListDelete = await Promise.all(
+    productList.data
+      .filter(product => productSkip.indexOf(product.id) === -1)
+      .map(product => stripe.products.del(product.id)),
+  )
   console.log(`${productListDelete.length} products deleted`)
 
   // create products
