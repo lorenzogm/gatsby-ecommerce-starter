@@ -3,11 +3,10 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
+import getProductPrice from '../utils/products/getProductPrice'
+
 const ProductListItem = ({ product }) => {
-  const price = product.skus.reduce(
-    (minPrice, sku) => (sku.price < minPrice ? sku.price : minPrice),
-    product.skus[0].price,
-  )
+  const price = getProductPrice({ product })
 
   return (
     <div key={product.id} style={{ breakInside: 'avoid' }}>
@@ -29,7 +28,7 @@ const ProductListItem = ({ product }) => {
           >
             {product.name}
           </div>
-          <div style={{ textAlign: 'center' }}>${price / 100}</div>
+          <div style={{ textAlign: 'center' }}>{price}</div>
         </div>
       </Link>
     </div>

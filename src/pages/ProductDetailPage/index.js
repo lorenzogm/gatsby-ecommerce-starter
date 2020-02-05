@@ -1,41 +1,41 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import Img from 'gatsby-image'
 import { ProductsContext } from '../../components/ProductsProvider'
-import { CartContext } from '../../components/CartProvider'
+import withLayout from '../../components/Layout/withLayout'
+import Image from './Image'
+import Name from './Name'
+import AddToCartButton from './AddToCartButton'
+import * as S from './styles'
+import Price from './Price'
 
 const ProductPage = ({ pageContext: { id: productId } }) => {
   const { products } = useContext(ProductsContext)
-  const { add, toggle } = useContext(CartContext)
 
   const product = products[productId]
 
+  console.log(product)
+
   return (
-    <Layout>
-      <div style={{ margin: '0 auto', maxWidth: 500 }}>
-        <div style={{ margin: '3rem auto', maxWidth: 300 }}>
-          {product.localFiles && <Img fluid={product.localFiles[0].childImageSharp.fluid} />}
-        </div>
-        <h2>{product.name}</h2>
-        <div>{product.caption}</div>
-        <br />
-        <div style={{ textAlign: 'justify' }}>{product.description}</div>
-        <button
-          style={{ margin: '2rem auto' }}
-          onClick={() => {
-            add(product.skus[0].id)
-            toggle(true)
-          }}
-        >
-          Add To Cart
-        </button>
-      </div>
-    </Layout>
+    <S.Main>
+      <S.ColumnLeft>
+        <Image product={product} />
+      </S.ColumnLeft>
+      <S.ColumnRight>
+        <Name product={product} />
+        <Price product={product} />
+        {/* <Color product={product} /> */}
+        {/* <Size product={product} /> */}
+        <AddToCartButton product={product} />
+        {/* <DeliveryConditions /> */}
+      </S.ColumnRight>
+    </S.Main>
   )
 }
 
 ProductPage.propTypes = {
-  productId: PropTypes.string.isRequired,
+  pageContext: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
-export default ProductPage
+export default withLayout(ProductPage)

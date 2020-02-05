@@ -1,23 +1,18 @@
 import React, { useContext } from 'react'
-import { CartContext } from './CartProvider'
-import Checkout from './Checkout'
-import CartItem from './CartItem'
+import Button from '@material-ui/core/Button'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+
+import { CartContext } from '../../CartProvider'
+import Checkout from '../../Checkout'
+import CartItem from '../../CartItem'
 
 const Cart = () => {
   const { cart, count, mode, toggle } = useContext(CartContext)
   return (
     <>
-      <button
-        onClick={() => toggle()}
-        style={{
-          position: 'fixed',
-          right: '2rem',
-          top: '2rem',
-          zIndex: '2',
-        }}
-      >
-        {mode ? '→' : 'cart'}
-      </button>
+      <Button onClick={() => toggle()}>
+        <ShoppingCartIcon />
+      </Button>
       <div
         style={{
           display: mode ? 'initial' : 'none',
