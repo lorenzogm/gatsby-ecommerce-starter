@@ -6,7 +6,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `starter-stripe`,
+    title: `Dindim`,
     description: `Stripe storefront starter for Gatsby`,
     author: `Brock McElroy <brockmcelroy.com>`,
   },
@@ -40,6 +40,14 @@ module.exports = {
         secretKey: process.env.STRIPE_SECRET_KEY,
         downloadFiles: true,
         auth: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
       },
     },
     `gatsby-plugin-styled-components`,

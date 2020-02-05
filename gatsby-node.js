@@ -15,10 +15,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-
-  return graphql(`
+const createProductDetailPages = async ({ graphql, createPage }) => {
+  const result = await graphql(`
     {
       allStripeSku {
         edges {
@@ -34,25 +32,29 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `).then(result => {
-    if (result.errors) {
-      Promise.reject(result.errors)
-    }
+  `)
 
-    // Create product pages
-    const products = {}
+  if (result.errors) {
+    Promise.reject(result.errors)
+  }
 
-    result.data.allStripeSku.edges.forEach(({ node }) => {
-      products[node.product.id] = node.fields.slug
-    })
+  // Create product pages
+  const products = {}
 
-    const productDetailPage = path.resolve('src/pages/ProductDetailPage/index.js')
-    Object.entries(products).forEach(([id, slug]) => {
-      createPage({
-        path: slug,
-        component: productDetailPage,
-        context: { id },
-      })
+  result.data.allStripeSku.edges.forEach(({ node }) => {
+    products[node.product.id] = node.fields.slug
+  })
+
+  Object.entries(products).forEach(([id, slug]) => {
+    createPage({
+      path: slug,
+      component: path.resolve('src/pages/ProductDetailPage/index.js'),
+      context: { id },
     })
   })
+}
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  await createProductDetailPages({ graphql, createPage })
 }
