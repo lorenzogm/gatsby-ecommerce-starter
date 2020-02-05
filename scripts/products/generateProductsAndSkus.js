@@ -1,7 +1,7 @@
 const slugify = require('slugify')
 
 const globalProduct = {
-  attributes: ['category', 'size', 'color'],
+  attributes: ['name', 'category', 'size', 'color'],
   type: 'good',
 }
 
@@ -12,17 +12,22 @@ const globalSku = {
   },
 }
 
-const generateProductsAndSkus = ({ defaultProduct, defaultSku, skus: { color, skus: skusByColor } }) => {
+const generateProductsAndSkus = ({ defaultProduct, defaultSku, skus }) => {
   const productId = slugify(defaultProduct.name, {
     lower: true,
   })
 
-  const skusGenerated = skusByColor.map(({ size, price }) => ({
-    ...globalSku,
-    ...defaultSku,
-    attributes: { ...defaultSku.attributes, color, size },
-    price,
-  }))
+  const skusGenerated = skus.reduce((acc, { color, image, sizes }) => {
+    return [
+      ...acc,
+      ...sizes.map(({ size, price }) => ({
+        ...globalSku,
+        ...defaultSku,
+        attributes: { ...defaultSku.attributes, color, image, size },
+        price,
+      })),
+    ]
+  }, [])
 
   const product = {
     ...globalProduct,

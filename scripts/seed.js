@@ -1,38 +1,35 @@
 const stripe = require('stripe')('sk_test_558JZshYB9voUZRf4u51NRJB00TnEWkTQC')
-const animals = require('./products/animals')
 
-const products = [...animals]
+const deleteAllSkus = require('./deleteAllSkus')
+const deleteAllProducts = require('./deleteAllProducts')
+const createProduct = require('./createProduct')
 
-const productSkip = ['TSH-MYF', 'BOD-MYF']
-const skuSkip = ['TSH-MYF-WHI-LAR', 'BOD-MYF-WHI-612']
+// animals
+const dogAndCatBabyBody = require('./products/animals/dog-and-cat-baby-body')
+const dogAndCatTShirt = require('./products/animals/dog-and-cat-kids-t-shirt')
+const foxBabyBody = require('./products/animals/fox-baby-body')
+const foxTShirt = require('./products/animals/fox-kids-t-shirt')
+const roarrrWomenTShirt = require('./products/animals/roarrr-women-t-shirt')
 
 const seed = async () => {
   console.log('Starting...')
   console.log('')
-  // delete all skus
-  const skuList = await stripe.skus.list()
-  const skuListDelete = await Promise.all(
-    skuList.data.filter(sku => skuSkip.indexOf(sku.id) === -1).map(sku => stripe.skus.del(sku.id)),
-  )
-  console.log(`${skuListDelete.length} skus deleted`)
 
-  // delete all products
-  const productList = await stripe.products.list()
-  const productListDelete = await Promise.all(
-    productList.data
-      .filter(product => productSkip.indexOf(product.id) === -1)
-      .map(product => stripe.products.del(product.id)),
-  )
-  console.log(`${productListDelete.length} products deleted`)
+  try {
+    await deleteAllSkus({ stripe })
+    await deleteAllProducts({ stripe })
 
-  // create products
-  const productListCreated = await Promise.all(products.map(({ skus, ...product }) => stripe.products.create(product)))
-  console.log(`${productListCreated.length} products created`)
+    // animals
+    await createProduct({ stripe, product: dogAndCatBabyBody })
+    await createProduct({ stripe, product: dogAndCatTShirt })
+    await createProduct({ stripe, product: foxBabyBody })
+    await createProduct({ stripe, product: foxTShirt })
+    await createProduct({ stripe, product: roarrrWomenTShirt })
 
-  // create skus
-  const skus = products.reduce((acc, product) => [...acc, ...product.skus], [])
-  const skuListCreated = await Promise.all(skus.map(sku => stripe.skus.create(sku)))
-  console.log(`${skuListCreated.length} skus created`)
+    // dinos
+  } catch (error) {
+    console.error(error)
+  }
 
   console.log('')
   console.log('DONE')
