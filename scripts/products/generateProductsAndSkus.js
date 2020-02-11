@@ -23,7 +23,13 @@ const generateProductsAndSkus = ({ defaultProduct, defaultSku, skus }) => {
       ...sizes.map(({ size, price }) => ({
         ...globalSku,
         ...defaultSku,
-        attributes: { ...defaultSku.attributes, color, image, size },
+        image,
+        attributes: {
+          ...defaultSku.attributes,
+          color: color.slug,
+          size,
+          name: `${defaultSku.attributes.name} ${color.name}`,
+        },
         price,
       })),
     ]
@@ -34,10 +40,8 @@ const generateProductsAndSkus = ({ defaultProduct, defaultSku, skus }) => {
     ...defaultProduct,
     id: productId,
     skus: skusGenerated.map(sku => ({
-      ...defaultSku,
       ...sku,
       product: productId,
-      attributes: { ...defaultSku.attributes, ...sku.attributes },
     })),
   }
 

@@ -42,7 +42,7 @@ const Provider = ({ data, children }) => {
     }
 
     const [liveProducts, liveSkus] = processStripeData(data, products)
-    console.log({ liveProducts, liveSkus })
+
     setProducts(liveProducts)
     setSkus(liveSkus)
   }
@@ -77,13 +77,34 @@ const processGatsbyData = data => {
   const initialProducts = {}
   const initialSkus = {}
   data.allStripeSku.group.forEach(group => {
-    const sku = group.edges[0].node
+    const edge =
+      group.edges.find(({ node }) => {
+        if (
+          !node.attributes ||
+          !node.attributes.color ||
+          !node.product ||
+          !node.product.metadata ||
+          !node.product.metadata.defaultColor
+        ) {
+          return false
+        }
+
+        return node.attributes.color === node.product.metadata.defaultColor
+      }) || group.edges[0]
+
+    const sku = edge.node
     const product = { slug: sku.fields.slug, ...sku.product }
-    product.skus = group.edges.map(({ node }) => {
-      initialSkus[node.id] = node
-      return node
-    })
-    initialProducts[product.id] = product
+    product.skus = group.edges.reduce((acc, { node }) => {
+      if (node.product.active) {
+        initialSkus[node.id] = node
+        return [...acc, node]
+      }
+
+      return acc
+    }, [])
+    if (product.active) {
+      initialProducts[product.id] = product
+    }
   })
   return [initialProducts, initialSkus]
 }
@@ -93,15 +114,17 @@ const processStripeData = (data, products) => {
   const liveProducts = {}
   const liveSkus = {}
   data.forEach(source => {
-    const { id } = source.product
-    const target = products[id].skus.find(x => x.id === source.id)
-    const updatedSku = Object.assign(source, target)
-    if (!liveProducts[id]) {
-      source.product.slug = products[id].slug
-      liveProducts[id] = { ...source.product, skus: [] }
+    if (source.product.active) {
+      const { id } = source.product
+      const target = products[id].skus.find(x => x.id === source.id)
+      const updatedSku = Object.assign(source, target)
+      if (!liveProducts[id]) {
+        source.product.slug = products[id].slug
+        liveProducts[id] = { ...source.product, skus: [] }
+      }
+      liveProducts[id].skus.push(updatedSku)
+      liveSkus[updatedSku.id] = updatedSku
     }
-    liveProducts[id].skus.push(updatedSku)
-    liveSkus[updatedSku.id] = updatedSku
   })
   return [liveProducts, liveSkus]
 }
@@ -115,6 +138,9 @@ export const skuFragment = graphql`
     }
     inventory {
       type
+    }
+    attributes {
+      color
     }
     product {
       id
@@ -131,6 +157,9 @@ export const skuFragment = graphql`
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
+      }
+      metadata {
+        defaultColor
       }
     }
   }

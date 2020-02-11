@@ -12,12 +12,13 @@ import ProductName from './ProductName'
 import { GridListTileBar } from '@material-ui/core'
 
 const ProductList = () => {
-  const { listProducts } = useContext(ProductsContext)
-  const products = listProducts()
+  const { listProducts, products } = useContext(ProductsContext)
+
+  console.log(products, listProducts())
 
   return (
     <GridList cols={4} cellHeight="auto">
-      {products.map(product => (
+      {listProducts().map(product => (
         <GridListTile key={product.id}>
           <Link to={`/${product.slug}`}>
             <ProductImage product={product} />

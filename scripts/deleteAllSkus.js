@@ -2,11 +2,23 @@ const skuSkip = ['TSH-MYF-WHI-LAR', 'BOD-MYF-WHI-612']
 
 const deleteAllSkus = async ({ stripe }) => {
   // delete all skus
-  const skuList = await stripe.skus.list({ limit: 100 })
-  const skuListDelete = await Promise.all(
-    skuList.data.filter(sku => skuSkip.indexOf(sku.id) === -1).map(sku => stripe.skus.del(sku.id)),
-  )
-  console.log(`${skuListDelete.length} skus deleted`)
+  let isAnySkuLeft = true
+  while (isAnySkuLeft) {
+    const skuList = await stripe.skus.list({ limit: 10 })
+
+    const skuListDelete = await Promise.all(
+      skuList.data.filter(sku => skuSkip.indexOf(sku.id) === -1).map(sku => stripe.skus.del(sku.id)),
+    )
+
+    console.log(`${skuListDelete.length} skus deleted`)
+
+    if (!skuList.has_more) {
+      isAnySkuLeft = false
+      break
+    }
+
+    await new Promise(r => setTimeout(r, 2000))
+  }
 }
 
 module.exports = deleteAllSkus

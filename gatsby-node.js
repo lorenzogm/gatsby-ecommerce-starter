@@ -6,11 +6,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   // Add slug for page generation.
   if (node.internal.type === 'StripeSku') {
-    const value = slug(node.product.name, slug.defaults.modes['rfc3986'])
-    createNodeField({
+    const value = createNodeField({
       node,
       name: 'slug',
-      value,
+      value: slug(node.attributes.name, slug.defaults.modes['rfc3986']),
     })
   }
 }
