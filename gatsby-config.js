@@ -1,3 +1,4 @@
+const path = require('path')
 var proxy = require('http-proxy-middleware')
 
 require('dotenv').config({
@@ -11,6 +12,16 @@ module.exports = {
     author: `Brock McElroy <brockmcelroy.com>`,
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: path.join(__dirname, 'src'),
+        components: path.join(__dirname, 'src/components'),
+        pages: path.join(__dirname, 'src/pages'),
+        theme: path.join(__dirname, 'src/theme'),
+        utils: path.join(__dirname, 'src/utils'),
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

@@ -5810,6 +5810,10 @@ gatsby-plugin-react-helmet@^3.1.5:
   dependencies:
     "@babel/runtime" "^7.7.6"
 
+gatsby-plugin-root-import@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-root-import/-/gatsby-plugin-root-import-2.0.5.tgz#04e520dc661d67f49aa7950f11b7c780fd2fdbd3"
+
 gatsby-plugin-sharp@^2.2.18:
   version "2.3.13"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.3.13.tgz#664d24f148a59552ebcd2fa92bfdab0b8dc4e9d9"
