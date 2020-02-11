@@ -1,8 +1,9 @@
 import React from 'react'
-import Logo from './Logo'
-import Cart from './Cart'
-import * as S from './styles'
 import Container from '@material-ui/core/Container'
+
+import Cart from './Cart'
+import Logo from './Logo'
+import * as S from './styles'
 import NavBar from './NavBar'
 
 const Header = () => {
@@ -11,7 +12,9 @@ const Header = () => {
       <S.AppBar position="static">
         <Container>
           <S.Toolbar>
-            <Logo />
+            <S.LogoWrapper>
+              <Logo />
+            </S.LogoWrapper>
             <NavBar />
             <Cart />
           </S.Toolbar>

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Container_ from '@material-ui/core/Container'
+import theme from 'theme'
 
 export const Root = styled.div`
   display: flex;
@@ -8,5 +9,6 @@ export const Root = styled.div`
 `
 
 export const Container = styled(Container_)`
-  background-color: green;
+  margin-top: ${theme.spacing(2)}px;
+  margin-bottom: ${theme.spacing(2)}px;
 `

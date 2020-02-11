@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import Button from '@material-ui/core/Button'
-import { CartContext } from '../../../components/CartProvider'
+import { CartContext } from 'components/CartProvider'
 
 const AddToCartButton = ({ product }) => {
   const { add, toggle } = useContext(CartContext)

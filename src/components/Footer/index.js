@@ -6,7 +6,7 @@ import * as S from './styles'
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary">
+    <Typography variant="body2">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
         Dindim{' '}
@@ -21,7 +21,7 @@ export default function StickyFooter() {
   return (
     <S.Footer>
       <Container>
-        <Typography variant="body1">My sticky footer can be found here.</Typography>
+        <Typography variant="body1">Bla bla bla</Typography>
         <Copyright />
       </Container>
     </S.Footer>

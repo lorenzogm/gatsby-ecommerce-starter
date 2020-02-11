@@ -2,9 +2,9 @@ import React, { useContext } from 'react'
 import Button from '@material-ui/core/Button'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 
-import { CartContext } from '../../CartProvider'
-import Checkout from '../../Checkout'
-import CartItem from '../../CartItem'
+import { CartContext } from 'components/CartProvider'
+import Checkout from 'components/Checkout'
+import CartItem from 'components/CartItem'
 
 const Cart = () => {
   const { cart, count, mode, toggle } = useContext(CartContext)

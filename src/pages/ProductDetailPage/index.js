@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { ProductsContext } from '../../components/ProductsProvider'
-import withLayout from '../../components/Layout/withLayout'
-import Image from './Image'
-import Name from './Name'
+
+import { ProductsContext } from 'components/ProductsProvider'
+import withLayout from 'components/Layout/withLayout'
+import ProductImage from 'components/ProductImage'
+import ProductPrice from './ProductPrice'
+import ProductName from './ProductName'
+
 import AddToCartButton from './AddToCartButton'
 import * as S from './styles'
-import Price from './Price'
 
 const ProductPage = ({ pageContext: { id: productId } }) => {
   const { products } = useContext(ProductsContext)
@@ -18,11 +20,11 @@ const ProductPage = ({ pageContext: { id: productId } }) => {
   return (
     <S.Main>
       <S.ColumnLeft>
-        <Image product={product} />
+        <ProductImage product={product} />
       </S.ColumnLeft>
       <S.ColumnRight>
-        <Name product={product} />
-        <Price product={product} />
+        <ProductName product={product} />
+        <ProductPrice product={product} />
         {/* <Color product={product} /> */}
         {/* <Size product={product} /> */}
         <AddToCartButton product={product} />
