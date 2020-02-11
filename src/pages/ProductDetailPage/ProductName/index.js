@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography'
 
 const ProductName = ({ product }) => {
   return (
-    <Typography variant="caption" component="h3" color="textPrimary">
+    <Typography component="h1" variant="h4" color="secondary">
       {product.name}
     </Typography>
   )

@@ -9,6 +9,5 @@ export const ColumnLeft = styled(Box)`
   flex: 1;
 `
 export const ColumnRight = styled(Box)`
-  background-color: green;
   flex: 1;
 `

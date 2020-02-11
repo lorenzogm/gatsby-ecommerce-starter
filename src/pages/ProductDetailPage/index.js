@@ -9,6 +9,7 @@ import ProductName from './ProductName'
 
 import AddToCartButton from './AddToCartButton'
 import * as S from './styles'
+import Divider from '@material-ui/core/Divider'
 
 const ProductPage = ({ pageContext: { id: productId } }) => {
   const { products } = useContext(ProductsContext)
@@ -24,6 +25,7 @@ const ProductPage = ({ pageContext: { id: productId } }) => {
       </S.ColumnLeft>
       <S.ColumnRight>
         <ProductName product={product} />
+        <Divider />
         <ProductPrice product={product} />
         {/* <Color product={product} /> */}
         {/* <Size product={product} /> */}
