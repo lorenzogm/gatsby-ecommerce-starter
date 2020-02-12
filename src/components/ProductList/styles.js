@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import Box_ from '@material-ui/core/Box'
-import GridList_ from '@material-ui/core/GridList'
 import theme from 'theme'
 
 export const ProductTile = styled(Box_)`

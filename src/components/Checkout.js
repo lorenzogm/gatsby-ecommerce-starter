@@ -1,5 +1,6 @@
+/* global fetch, localStorage, alert */
+
 import React, { useContext } from 'react'
-import { navigate } from 'gatsby'
 import StripeCheckout from 'react-stripe-checkout'
 import { CartContext } from './CartProvider'
 import icon from '../images/gatsby-icon.png'
@@ -14,9 +15,8 @@ const Checkout = () => {
       quantity,
     }))
 
-    let response
     try {
-      response = await fetch('/.netlify/functions/orderCreate', {
+      fetch('/.netlify/functions/orderCreate', {
         method: 'POST',
         body: JSON.stringify({
           token,
@@ -38,6 +38,7 @@ const Checkout = () => {
         }),
       }).then(response => response.json())
     } catch (err) {
+      // eslint-disable-next-line no-alert
       alert(err.message)
     }
 
@@ -63,7 +64,7 @@ const Checkout = () => {
       zipCode
       allowRememberMe
     >
-      <button>Checkout for ${total / 100}</button>
+      <button type="button">Checkout for ${total / 100}</button>
     </StripeCheckout>
   )
 }

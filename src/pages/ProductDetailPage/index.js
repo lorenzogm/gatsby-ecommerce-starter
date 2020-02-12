@@ -1,22 +1,23 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import Divider from '@material-ui/core/Divider'
 
-import { ProductsContext } from 'components/ProductsProvider'
+import { useProductsContext } from 'context/ProductsContext'
 import withLayout from 'components/Layout/withLayout'
 import ProductImage from 'components/ProductImage'
+
+import * as S from './styles'
+
+import ProductColor from './ProductColor'
 import ProductPrice from './ProductPrice'
 import ProductName from './ProductName'
 
 import AddToCartButton from './AddToCartButton'
-import * as S from './styles'
-import Divider from '@material-ui/core/Divider'
 
 const ProductPage = ({ pageContext: { id: productId } }) => {
-  const { products } = useContext(ProductsContext)
+  const { products } = useProductsContext()
 
   const product = products[productId]
-
-  console.log(product)
 
   return (
     <S.Main>
@@ -27,7 +28,7 @@ const ProductPage = ({ pageContext: { id: productId } }) => {
         <ProductName product={product} />
         <Divider />
         <ProductPrice product={product} />
-        {/* <Color product={product} /> */}
+        <ProductColor product={product} />
         {/* <Size product={product} /> */}
         <AddToCartButton product={product} />
         {/* <DeliveryConditions /> */}

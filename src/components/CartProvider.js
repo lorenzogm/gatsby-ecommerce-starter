@@ -1,6 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react'
+/* eslint-disable no-console */
+/* global localStorage */
+
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { ProductsContext } from './ProductsProvider'
+import { useProductsContext } from 'context/ProductsContext'
 
 export const CartContext = React.createContext()
 
@@ -9,7 +12,7 @@ export const CartContext = React.createContext()
  * The cart and related methods are shared through context.
  */
 const CartProvider = ({ children }) => {
-  const { skus } = useContext(ProductsContext)
+  const { skus } = useProductsContext()
   const [mode, setMode] = useState(false)
 
   /** Load cart from local storage. Initialize if not present or incorrect. */
@@ -34,15 +37,36 @@ const CartProvider = ({ children }) => {
   }, [contents])
 
   /** An array representing the cart in the form of [{sku}, quantity] */
-  const cart = contents.map(([id, quantity]) => {
-    return [skus[id], quantity]
-  })
+  const cart = contents.map(([id, quantity]) => [skus[id], quantity])
 
   /** The number of items in the cart */
+  // eslint-disable-next-line no-unused-vars
   const count = contents.reduce((sum, [_, quantity]) => sum + quantity, 0)
 
   /** The total cost of the items in the cart */
   const total = contents.reduce((sum, [id, quantity]) => (skus[id] ? sum + skus[id].price * quantity : sum), 0)
+
+  /** Returns true if `quantity` of item with `id` is available for purchase */
+  function available(id, quantity = 1) {
+    const sku = skus[id]
+    if (!sku) {
+      console.error(`Sku with id ${id} not found`)
+      return false
+    }
+    if (!sku.active) {
+      return false
+    }
+    if (sku.inventory.type === 'infinite') {
+      return true
+    }
+    if (sku.inventory.type === 'bucket') {
+      return ['in_stock', 'limited'].includes(sku.inventory.type)
+    }
+    if (sku.inventory.type === 'finite') {
+      return sku.inventory.quantity >= quantity
+    }
+    return false
+  }
 
   /** Sets quantity of item with `id` */
   function set(id, quantity) {
@@ -69,28 +93,7 @@ const CartProvider = ({ children }) => {
 
   /** Removes item with `id` */
   function remove(id) {
-    setContents(state => {
-      return state.filter(item => item[0] !== id)
-    })
-  }
-
-  /** Returns true if `quantity` of item with `id` is available for purchase */
-  function available(id, quantity = 1) {
-    const sku = skus[id]
-    if (!sku) {
-      console.error(`Sku with id ${id} not found`)
-      return false
-    } else if (!sku.active) {
-      return false
-    } else if (sku.inventory.type === 'infinite') {
-      return true
-    } else if (sku.inventory.type === 'bucket') {
-      return ['in_stock', 'limited'].includes(sku.inventory.type)
-    } else if (sku.inventory.type === 'finite') {
-      return sku.inventory.quantity >= quantity
-    } else {
-      return false
-    }
+    setContents(state => state.filter(item => item[0] !== id))
   }
 
   /** Toggles cart display, or sets to the boolean `force` if provided */
@@ -115,7 +118,7 @@ const CartProvider = ({ children }) => {
 }
 
 CartProvider.propTypes = {
-  children: PropTypes.any.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export default CartProvider

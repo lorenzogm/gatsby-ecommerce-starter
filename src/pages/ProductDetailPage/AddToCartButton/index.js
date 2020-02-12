@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import Box from '@material-ui/core/Box'
 import ShoppingCart from '@material-ui/icons/ShoppingCart'
 import Button from '@material-ui/core/Button'
 import { CartContext } from 'components/CartProvider'

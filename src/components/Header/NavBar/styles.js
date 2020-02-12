@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import Box from '@material-ui/core/Box'
 import theme from 'theme'
-import Link_ from 'components/Link'
 
 export const NavBar = styled(Box)`
   display: flex;

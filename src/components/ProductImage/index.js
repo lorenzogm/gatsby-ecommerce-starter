@@ -10,6 +10,7 @@ const ProductImage = ({ product }) => {
     !product.localFiles[0].childImageSharp ||
     !product.localFiles[0].childImageSharp.fluid
   ) {
+    // eslint-disable-next-line no-console
     console.error(`Undefined "localFiles" for product ${product.id}`)
     return null
   }
@@ -19,6 +20,8 @@ const ProductImage = ({ product }) => {
 
 ProductImage.propTypes = {
   product: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     localFiles: PropTypes.arrayOf(
       PropTypes.shape({
         childImageSharp: PropTypes.shape({

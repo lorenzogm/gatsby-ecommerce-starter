@@ -11,8 +11,7 @@ function Copyright() {
       <Link color="inherit" href="https://material-ui.com/">
         Dindim{' '}
       </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
+      {new Date().getFullYear()}.
     </Typography>
   )
 }

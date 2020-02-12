@@ -13,7 +13,7 @@ const CartItem = ({ sku, quantity }) => {
           objectFit: 'contain',
           marginRight: '0.5rem',
         }}
-        src={sku.image || sku.product.images[0]}
+        src={sku.image}
         alt={sku.product.name}
       />
       <div style={{ flexBasis: '100%' }}>
@@ -25,20 +25,25 @@ const CartItem = ({ sku, quantity }) => {
           <strong>${(sku.price / 100) * quantity}</strong>
         </div>
       </div>
-      <span
-        style={{}}
+      <button
+        type="button"
         onClick={() => {
           remove(sku.id)
         }}
       >
         &times;
-      </span>
+      </button>
     </div>
   )
 }
 
 CartItem.propTypes = {
-  sku: PropTypes.object.isRequired,
+  sku: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    product: PropTypes.shape({ name: PropTypes.string.isRequired }),
+  }).isRequired,
   quantity: PropTypes.number.isRequired,
 }
 

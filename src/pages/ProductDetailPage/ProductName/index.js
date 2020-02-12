@@ -3,13 +3,11 @@ import PropTypes from 'prop-types'
 
 import Typography from '@material-ui/core/Typography'
 
-const ProductName = ({ product }) => {
-  return (
-    <Typography component="h1" variant="h4" color="secondary">
-      {product.name}
-    </Typography>
-  )
-}
+const ProductName = ({ product }) => (
+  <Typography component="h1" variant="h4" color="secondary">
+    {product.name}
+  </Typography>
+)
 
 ProductName.propTypes = {
   product: PropTypes.shape({

@@ -1,5 +1,6 @@
 const getProductPrice = ({ product }) => {
   if (!product || !product.skus || !product.skus[0] || !product.skus[0].price) {
+    // eslint-disable-next-line no-console
     console.error(`Unexpected product: ${JSON.stringify(product)}`)
   }
 

@@ -10,7 +10,8 @@ module.exports.handler = (event, context, callback) => {
       expand: ['data.product'],
     },
     (err, result) => {
-      let statusCode, body
+      let statusCode
+      let body
 
       if (err) {
         statusCode = 500

@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Container from '@material-ui/core/Container'
 import { StaticQuery, graphql } from 'gatsby'
+import { ThemeProvider } from '@material-ui/core/styles'
 
 import Header from 'components/Header'
-import ProductsProvider from 'components/ProductsProvider'
+import { ProductsContextProvider } from 'context/ProductsContext'
 import CartProvider from 'components/CartProvider'
 import Footer from 'components/Footer'
+import theme from 'theme'
+
+import * as S from './styles'
 
 import './layout.css'
-import * as S from './styles'
-import { ThemeProvider } from '@material-ui/core/styles'
-import theme from 'theme'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -26,7 +26,7 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <ThemeProvider theme={theme}>
-        <ProductsProvider>
+        <ProductsContextProvider>
           <CartProvider>
             <S.Root>
               <Header siteTitle={data.site.siteMetadata.title} />
@@ -34,7 +34,7 @@ const Layout = ({ children }) => (
               <Footer />
             </S.Root>
           </CartProvider>
-        </ProductsProvider>
+        </ProductsContextProvider>
       </ThemeProvider>
     )}
   />

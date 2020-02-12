@@ -1,20 +1,17 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 
-import { ProductsContext } from 'components/ProductsProvider'
+import { useProductsContext } from 'context/ProductsContext'
 import Link from 'components/Link'
 import ProductImage from 'components/ProductImage'
 
 import * as S from './styles'
 import ProductPrice from './ProductPrice'
 import ProductName from './ProductName'
-import { GridListTileBar } from '@material-ui/core'
 
 const ProductList = () => {
-  const { listProducts, products } = useContext(ProductsContext)
-
-  console.log(products, listProducts())
+  const { listProducts } = useProductsContext()
 
   return (
     <GridList cols={4} cellHeight="auto">
