@@ -1,12 +1,14 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./src",
-        "paths": {
-            "*": [
-                "components/*",
-                "pages/*",
-                "*"
-            ]
-        }
-    },
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "components": ["src/components"],
+      "constants": ["src/constants"],
+      "context": ["src/context"],
+      "graphql": ["src/graphql"],
+      "pages": ["src/pages"],
+      "theme": ["src/theme"],
+      "utils": ["src/utils"]
+    }
+  }
 }

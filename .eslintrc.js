@@ -1,29 +1,34 @@
 module.exports = {
-  env: {
-    browser: true,
-    es6: true,
+  // extends: 'airbnb',
+  extends: ['airbnb', 'prettier', 'prettier/react'],
+  plugins: ['prettier'],
+  "settings": {
+    "import/resolver": {
+      "alias": [
+        ["components", "./src/components"],
+        ["contants", "./src/contants"],
+        ["context", "./src/context"],
+        ["graphql", "./src/graphql"],
+        ["pages", "./src/pages"],
+        ["theme", "./src/theme"],
+        ["utils", "./src/utils"],
+      ]
+    }
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'prettier', 'prettier/react'],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 2018,
-    sourceType: 'module',
-  },
-  plugins: ['react'],
   rules: {
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-  },
-  settings: {
-    'import/resolver': {
-      node: {
-        moduleDirectory: ['node_modules', 'src'],
+    'prettier/prettier': [
+      'error',
+        {
+        trailingComma: 'all',
+        semi: false,
+        singleQuote: true,
+        printWidth: 120,
       },
-    },
+    ],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-curly-brace-presence': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    // 'react-hooks/rules-of-hooks': 'error',
+    // 'react-hooks/exhaustive-deps': 'warn',
   },
 }

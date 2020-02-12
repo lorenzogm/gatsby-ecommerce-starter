@@ -14,7 +14,9 @@
     "start:lambda": "netlify-lambda serve -c ./webpack.development.js src/functions",
     "build": "run-p build:**",
     "build:app": "gatsby build",
-    "build:lambda": "netlify-lambda build -c ./webpack.production.js src/functions"
+    "build:lambda": "netlify-lambda build -c ./webpack.production.js src/functions",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.0",
@@ -43,9 +45,17 @@
     "styled-components": "^5.0.0"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-gatsby-standard": "^2.2.0",
-    "eslint-plugin-react": "^7.14.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-root-import": "^2.0.5",
     "http-proxy-middleware": "^0.19.1",
     "netlify-lambda": "^1.6.3",
