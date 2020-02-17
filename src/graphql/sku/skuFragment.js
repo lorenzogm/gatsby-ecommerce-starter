@@ -8,14 +8,24 @@ export const skuFragment = graphql`
       slug
     }
     attributes {
+      category
       color
       size
     }
+    localFiles {
+      childImageSharp {
+        fluid(maxWidth: $maxWidth, quality: $quality) {
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+        }
+      }
+    }
     product {
+      active
       id
       name
       metadata {
         defaultColor
+        defaultSize
       }
       localFiles {
         childImageSharp {

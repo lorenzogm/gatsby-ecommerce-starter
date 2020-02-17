@@ -15,6 +15,4 @@ const allStripeSku = graphql`
   }
 `
 
-console.log(allStripeSku)
-
 export default allStripeSku
