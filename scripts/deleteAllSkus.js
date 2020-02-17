@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 const skuSkip = ['TSH-MYF-WHI-LAR', 'BOD-MYF-WHI-612']
 
 const deleteAllSkus = async ({ stripe }) => {
@@ -10,6 +11,7 @@ const deleteAllSkus = async ({ stripe }) => {
       skuList.data.filter(sku => skuSkip.indexOf(sku.id) === -1).map(sku => stripe.skus.del(sku.id)),
     )
 
+    // eslint-disable-next-line no-console
     console.log(`${skuListDelete.length} skus deleted`)
 
     if (!skuList.has_more) {

@@ -1,5 +1,6 @@
 const categories = require('../../../src/constants/categories')
 const colors = require('../../../src/constants/colors')
+const sizes = require('../../../src/constants/sizes')
 
 const defaultProduct = {
   name: 'Fox Kid T-Shirt',
@@ -10,6 +11,7 @@ const defaultProduct = {
   ],
   metadata: {
     defaultColor: colors.WHITE.slug,
+    defaultSize: sizes.KIDS.YEARS_3_4.slug,
   },
 }
 
@@ -26,23 +28,23 @@ const skus = [
     image: defaultProduct.images[0],
     sizes: [
       {
-        size: '3-4 Years',
+        size: sizes.KIDS.YEARS_3_4.slug,
         price: 1500,
       },
       {
-        size: '5-6 years',
+        size: sizes.KIDS.YEARS_5_6.slug,
         price: 1500,
       },
       {
-        size: '7-8 years',
+        size: sizes.KIDS.YEARS_7_8.slug,
         price: 1500,
       },
       {
-        size: '9-10 years',
+        size: sizes.KIDS.YEARS_9_10.slug,
         price: 1500,
       },
       {
-        size: '11-12 years',
+        size: sizes.KIDS.YEARS_11_12.slug,
         price: 1500,
       },
     ],

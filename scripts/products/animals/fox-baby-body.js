@@ -1,5 +1,6 @@
 const categories = require('../../../src/constants/categories')
 const colors = require('../../../src/constants/colors')
+const sizes = require('../../../src/constants/sizes')
 
 const defaultProduct = {
   name: 'Fox Baby Body',
@@ -10,6 +11,7 @@ const defaultProduct = {
   ],
   metadata: {
     defaultColor: colors.WHITE.slug,
+    defaultSize: sizes.BABIES.MONTHS_6_12.slug,
   },
 }
 
@@ -26,19 +28,19 @@ const skus = [
     image: defaultProduct.images[0],
     sizes: [
       {
-        size: '0-3 Months',
+        size: sizes.BABIES.MONTHS_0_3.slug,
         price: 1500,
       },
       {
-        size: '3-6 Months',
+        size: sizes.BABIES.MONTHS_3_6.slug,
         price: 1500,
       },
       {
-        size: '6-12 Months',
+        size: sizes.BABIES.MONTHS_6_12.slug,
         price: 1500,
       },
       {
-        size: '12-18 Months',
+        size: sizes.BABIES.MONTHS_12_18.slug,
         price: 1500,
       },
     ],

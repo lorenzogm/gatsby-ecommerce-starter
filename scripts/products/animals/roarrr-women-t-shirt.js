@@ -1,5 +1,6 @@
 const categories = require('../../../src/constants/categories')
 const colors = require('../../../src/constants/colors')
+const sizes = require('../../../src/constants/sizes')
 
 const defaultProduct = {
   name: 'Roarrr Women T-Shirt',
@@ -10,6 +11,7 @@ const defaultProduct = {
   ],
   metadata: {
     defaultColor: colors.GREY_MELANGE.slug,
+    defaultSize: sizes.WOMEN.MEDIUM.slug,
   },
 }
 
@@ -26,19 +28,23 @@ const skus = [
     image: defaultProduct.images[0],
     sizes: [
       {
-        size: 'S',
+        size: sizes.WOMEN.SMALL.slug,
         price: 1500,
       },
       {
-        size: 'M',
+        size: sizes.WOMEN.MEDIUM.slug,
         price: 1500,
       },
       {
-        size: 'L',
+        size: sizes.WOMEN.LARGE.slug,
         price: 1500,
       },
       {
-        size: 'XL',
+        size: sizes.WOMEN.XLARGE.slug,
+        price: 1500,
+      },
+      {
+        size: sizes.WOMEN.XXLARGE.slug,
         price: 1500,
       },
     ],
@@ -48,19 +54,23 @@ const skus = [
     image: defaultProduct.images[0],
     sizes: [
       {
-        size: 'S',
+        size: sizes.WOMEN.SMALL.slug,
         price: 1500,
       },
       {
-        size: 'M',
+        size: sizes.WOMEN.MEDIUM.slug,
         price: 1500,
       },
       {
-        size: 'L',
+        size: sizes.WOMEN.LARGE.slug,
         price: 1500,
       },
       {
-        size: 'XL',
+        size: sizes.WOMEN.XLARGE.slug,
+        price: 1500,
+      },
+      {
+        size: sizes.WOMEN.XXLARGE.slug,
         price: 1500,
       },
     ],
@@ -70,19 +80,23 @@ const skus = [
     image: defaultProduct.images[0],
     sizes: [
       {
-        size: 'S',
+        size: sizes.WOMEN.SMALL.slug,
         price: 1500,
       },
       {
-        size: 'M',
+        size: sizes.WOMEN.MEDIUM.slug,
         price: 1500,
       },
       {
-        size: 'L',
+        size: sizes.WOMEN.LARGE.slug,
         price: 1500,
       },
       {
-        size: 'XL',
+        size: sizes.WOMEN.XLARGE.slug,
+        price: 1500,
+      },
+      {
+        size: sizes.WOMEN.XXLARGE.slug,
         price: 1500,
       },
     ],
