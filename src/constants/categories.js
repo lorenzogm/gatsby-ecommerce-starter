@@ -1,4 +1,8 @@
 const categories = {
+  UNISEX: {
+    slug: 'unisex',
+    name: 'Unisex',
+  },
   WOMEN: {
     slug: 'women',
     name: 'Women',
