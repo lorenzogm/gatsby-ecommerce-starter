@@ -1,6 +1,6 @@
 const path = require('path')
 
-const createProductDetailPages = async ({ graphql, createPage }) => {
+const createSkuDetailPages = async ({ graphql, createPage }) => {
   const { errors, data } = await graphql(`
     {
       allStripeSku {
@@ -35,10 +35,10 @@ const createProductDetailPages = async ({ graphql, createPage }) => {
   data.allStripeSku.edges.forEach(({ node: sku }) => {
     createPage({
       path: sku.fields.slug,
-      component: path.resolve('src/templates/ProductDetailPage/index.js'),
+      component: path.resolve('src/templates/SkuDetailPage/index.js'),
       context: { productId: sku.product.id, skuId: sku.id },
     })
   })
 }
 
-module.exports = createProductDetailPages
+module.exports = createSkuDetailPages

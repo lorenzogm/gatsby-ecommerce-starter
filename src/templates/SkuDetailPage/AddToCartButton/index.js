@@ -16,7 +16,7 @@ const AddToCartButton = ({ product }) => {
       fullWidth
       endIcon={<ShoppingCart style={{ fontSize: 40 }} />}
       onClick={() => {
-        add(product.skus[0].id)
+        add(product.skuDefaultId)
         toggle(true)
       }}
     >
@@ -27,7 +27,7 @@ const AddToCartButton = ({ product }) => {
 
 AddToCartButton.propTypes = {
   product: PropTypes.shape({
-    skus: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string.isRequired }).isRequired).isRequired,
+    skuDefaultId: PropTypes.string.isRequired,
   }).isRequired,
 }
 

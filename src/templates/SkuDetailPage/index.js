@@ -4,31 +4,32 @@ import Divider from '@material-ui/core/Divider'
 
 import { useProductsContext } from 'context/ProductsContext'
 import withLayout from 'components/Layout/withLayout'
-import ProductImage from 'components/ProductImage'
+import ImageLocal from 'components/ImageLocal'
 
 import * as S from './styles'
 
-import ProductColor from './ProductColor'
-import ProductPrice from './ProductPrice'
+// import ProductColors from './ProductColors'
+import SkuPrice from './SkuPrice'
 import ProductName from './ProductName'
 
 import AddToCartButton from './AddToCartButton'
 
-const ProductPage = ({ pageContext: { id: productId } }) => {
-  const { products } = useProductsContext()
+const SkuDetailPage = ({ pageContext: { productId, skuId } }) => {
+  const { products, skus } = useProductsContext()
 
   const product = products[productId]
+  const sku = skus[skuId]
 
   return (
     <S.Main>
       <S.ColumnLeft>
-        <ProductImage product={product} />
+        <ImageLocal localFiles={sku.localFiles} alt={product.name} />
       </S.ColumnLeft>
       <S.ColumnRight>
         <ProductName product={product} />
         <Divider />
-        <ProductPrice product={product} />
-        <ProductColor product={product} />
+        <SkuPrice sku={sku} />
+        {/* <ProductColors product={product} /> */}
         {/* <Size product={product} /> */}
         <AddToCartButton product={product} />
         {/* <DeliveryConditions /> */}
@@ -37,10 +38,11 @@ const ProductPage = ({ pageContext: { id: productId } }) => {
   )
 }
 
-ProductPage.propTypes = {
+SkuDetailPage.propTypes = {
   pageContext: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    productId: PropTypes.string.isRequired,
+    skuId: PropTypes.string.isRequired,
   }).isRequired,
 }
 
-export default withLayout(ProductPage)
+export default withLayout(SkuDetailPage)

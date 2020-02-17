@@ -1,8 +1,8 @@
-const createProductDetailPages = require('./createProductDetailPages')
+const createSkuDetailPages = require('./createSkuDetailPages')
 
 const createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  await createProductDetailPages({ graphql, createPage })
+  await createSkuDetailPages({ graphql, createPage })
 }
 
 module.exports = createPages

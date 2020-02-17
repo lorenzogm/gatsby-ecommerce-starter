@@ -2,19 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 
-import getProductPrice from 'utils/products/getProductPrice'
+import priceFormat from 'utils/priceFormat'
 
 const ProductPrice = ({ product }) => {
-  const price = getProductPrice({ product })
   return (
     <Typography variant="caption" color="primary">
-      {price}
+      {priceFormat(product.priceDefault)}
     </Typography>
   )
 }
 
 ProductPrice.propTypes = {
-  product: PropTypes.shape({}).isRequired,
+  product: PropTypes.shape({ priceDefault: PropTypes.number.isRequired }).isRequired,
 }
 
 export default ProductPrice

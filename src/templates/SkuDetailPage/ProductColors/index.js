@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 
 const ProductColor = ({ product }) => {
-  console.log(product)
   return (
     <Typography component="h1" variant="h4" color="secondary">
       {product.name}

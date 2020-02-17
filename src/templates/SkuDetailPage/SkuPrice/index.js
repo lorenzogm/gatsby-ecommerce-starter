@@ -1,16 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import getProductPrice from 'utils/products/getProductPrice'
+import priceFormat from 'utils/priceFormat'
 
 import * as S from './styles'
 
-const ProductPrice = ({ product }) => {
-  const price = getProductPrice({ product })
+const SkuPrice = ({ sku }) => {
   return (
     <S.Box>
       <S.Price color="secondary" component="span" variant="h6">
-        {price}
+        {priceFormat(sku.price)}
       </S.Price>
       <S.VAT component="span" variant="caption">
         VAT Included
@@ -19,8 +18,8 @@ const ProductPrice = ({ product }) => {
   )
 }
 
-ProductPrice.propTypes = {
-  product: PropTypes.shape({}).isRequired,
+SkuPrice.propTypes = {
+  sku: PropTypes.shape({ price: PropTypes.number.isRequired }).isRequired,
 }
 
-export default ProductPrice
+export default SkuPrice
