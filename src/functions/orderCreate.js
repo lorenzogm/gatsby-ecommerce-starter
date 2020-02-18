@@ -1,6 +1,4 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
-  maxNetworkRetries: 2, // Retry a request twice before giving up
-})
+const stripe = require('../services/stripe')
 
 /** Respond with status code 500 and error message */
 function errorResponse(err, callback) {

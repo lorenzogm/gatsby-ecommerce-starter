@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-const stripe = require('stripe')('sk_test_558JZshYB9voUZRf4u51NRJB00TnEWkTQC', {
-  maxNetworkRetries: 2, // Retry a request twice before giving up
-})
+const stripe = require('stripe')('sk_test_558JZshYB9voUZRf4u51NRJB00TnEWkTQC')
+
+stripe.setMaxNetworkRetries(2)
 
 const deleteAllSkus = require('./deleteAllSkus')
 const deleteAllProducts = require('./deleteAllProducts')
