@@ -22,8 +22,6 @@ ProductsContextProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default ProductsContextProvider
-
 function useProductsContext() {
   const context = React.useContext(ProductsContext)
 

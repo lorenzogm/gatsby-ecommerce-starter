@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Divider from '@material-ui/core/Divider'
 
 import { useProductsContext } from 'context/ProductsContext'
-import withLayout from 'components/Layout/withLayout'
 import ImageLocal from 'components/ImageLocal'
 
 import * as S from './styles'
@@ -45,4 +44,4 @@ SkuDetailPage.propTypes = {
   }).isRequired,
 }
 
-export default withLayout(SkuDetailPage)
+export default SkuDetailPage

@@ -15,6 +15,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-eslint',
+    'gatsby-plugin-layout',
     {
       resolve: 'gatsby-plugin-root-import',
       options: {

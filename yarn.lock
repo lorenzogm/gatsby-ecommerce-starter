@@ -5676,6 +5676,12 @@ gatsby-plugin-eslint@^2.0.8:
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-eslint/-/gatsby-plugin-eslint-2.0.8.tgz#1ff7f546a427d274dc2de3932ba29822aae330c3"
 
+gatsby-plugin-layout@^1.1.22:
+  version "1.1.22"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-layout/-/gatsby-plugin-layout-1.1.22.tgz#6f3b6ae9405099e06a311d835e0251b573c08169"
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+
 gatsby-plugin-manifest@^2.2.12:
   version "2.2.37"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.2.37.tgz#ea385bbd453d8455d3c4715c4f3b1e8c1313a97b"

@@ -26,6 +26,7 @@
     "dotenv-webpack": "^1.7.0",
     "gatsby": "^2.15.1",
     "gatsby-image": "^2.2.15",
+    "gatsby-plugin-layout": "^1.1.22",
     "gatsby-plugin-manifest": "^2.2.12",
     "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-offline": "^2.2.10",
