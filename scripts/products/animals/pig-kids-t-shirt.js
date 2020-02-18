@@ -3,19 +3,19 @@ const colors = require('../../../src/constants/colors')
 const sizes = require('../../../src/constants/sizes')
 
 const defaultProduct = {
-  name: 'Fox Baby Body',
+  name: 'Pig Kid T-Shirt',
   caption: 'caption',
   description: 'description',
-  images: ['https://i.imgur.com/Lh2B2Mx.png'],
+  images: [''],
   metadata: {
     defaultColor: colors.WHITE.slug,
-    defaultSize: sizes.BABIES.MONTHS_6_12.slug,
+    defaultSize: sizes.KIDS.YEARS_3_4.slug,
   },
 }
 
 const defaultSku = {
   attributes: {
-    category: categories.BABIES.slug,
+    category: categories.KIDS.slug,
     name: defaultProduct.name,
   },
 }
@@ -26,19 +26,23 @@ const skus = [
     image: defaultProduct.images[0],
     sizes: [
       {
-        size: sizes.BABIES.MONTHS_0_3.slug,
+        size: sizes.KIDS.YEARS_3_4.slug,
         price: 1500,
       },
       {
-        size: sizes.BABIES.MONTHS_3_6.slug,
+        size: sizes.KIDS.YEARS_5_6.slug,
         price: 1500,
       },
       {
-        size: sizes.BABIES.MONTHS_6_12.slug,
+        size: sizes.KIDS.YEARS_7_8.slug,
         price: 1500,
       },
       {
-        size: sizes.BABIES.MONTHS_12_18.slug,
+        size: sizes.KIDS.YEARS_9_10.slug,
+        price: 1500,
+      },
+      {
+        size: sizes.KIDS.YEARS_11_12.slug,
         price: 1500,
       },
     ],

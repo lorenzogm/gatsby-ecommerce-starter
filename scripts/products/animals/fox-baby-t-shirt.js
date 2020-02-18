@@ -3,10 +3,10 @@ const colors = require('../../../src/constants/colors')
 const sizes = require('../../../src/constants/sizes')
 
 const defaultProduct = {
-  name: 'Fox Baby Body',
+  name: 'Fox Baby T-Shirt',
   caption: 'caption',
   description: 'description',
-  images: ['https://i.imgur.com/Lh2B2Mx.png'],
+  images: ['https://i.imgur.com/GDC0Jwv.png'],
   metadata: {
     defaultColor: colors.WHITE.slug,
     defaultSize: sizes.BABIES.MONTHS_6_12.slug,
