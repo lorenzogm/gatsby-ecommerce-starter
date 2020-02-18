@@ -9,9 +9,9 @@ const ProductsContext = React.createContext()
  * Wrapper to give Provider access to Sku nodes from Gatsby's GraphQL store.
  */
 const ProductsContextProvider = ({ children }) => {
-  const { loading, data } = useFetchProducts()
+  const { data } = useFetchProducts()
 
-  if (loading) {
+  if (!data) {
     return null
   }
 
