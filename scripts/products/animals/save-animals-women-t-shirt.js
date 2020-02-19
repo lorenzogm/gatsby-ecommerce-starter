@@ -3,21 +3,20 @@ const colors = require('../../../src/constants/colors')
 const sizes = require('../../../src/constants/sizes')
 
 const defaultProduct = {
-  name: 'Roarrr Women T-Shirt',
+  name: 'Save Animals Women T-Shirt',
   caption: 'caption',
   description: 'description',
-  images: [
-    'https://instagram.fzrh1-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/79363843_586759011869466_6124695461737797898_n.jpg?_nc_ht=instagram.fzrh1-1.fna.fbcdn.net&_nc_cat=106&_nc_ohc=2H3lIJCT9KwAX9aWVu6&oh=8ce9ccc6d69b651b8fbc68ced55c1b39&oe=5ED9EA4F',
-  ],
+  images: ['https://i.imgur.com/3PEk1RY.png'],
   metadata: {
-    defaultColor: colors.GREY_MELANGE.slug,
-    defaultSize: sizes.WOMEN.MEDIUM.slug,
+    categoryId: categories.WOMEN.id,
+    defaultColor: colors.GREY_MELANGE.id,
+    defaultSize: sizes.WOMEN.MEDIUM.id,
   },
 }
 
 const defaultSku = {
   attributes: {
-    category: categories.WOMEN.slug,
+    category: categories.WOMEN.id,
     name: defaultProduct.name,
   },
 }
@@ -25,78 +24,78 @@ const defaultSku = {
 const skus = [
   {
     color: colors.GREY_MELANGE,
-    image: defaultProduct.images[0],
+    image: 'https://i.imgur.com/3PEk1RY.png',
     sizes: [
       {
-        size: sizes.WOMEN.SMALL.slug,
+        size: sizes.WOMEN.SMALL.id,
         price: 1500,
       },
       {
-        size: sizes.WOMEN.MEDIUM.slug,
+        size: sizes.WOMEN.MEDIUM.id,
         price: 1500,
       },
       {
-        size: sizes.WOMEN.LARGE.slug,
+        size: sizes.WOMEN.LARGE.id,
         price: 1500,
       },
       {
-        size: sizes.WOMEN.XLARGE.slug,
+        size: sizes.WOMEN.XLARGE.id,
         price: 1500,
       },
       {
-        size: sizes.WOMEN.XXLARGE.slug,
+        size: sizes.WOMEN.XXLARGE.id,
         price: 1500,
       },
     ],
   },
   {
     color: colors.LIGHT_CHARCOAL,
-    image: defaultProduct.images[0],
+    image: 'https://i.imgur.com/ZEUMKG2.png',
     sizes: [
       {
-        size: sizes.WOMEN.SMALL.slug,
+        size: sizes.WOMEN.SMALL.id,
         price: 1500,
       },
       {
-        size: sizes.WOMEN.MEDIUM.slug,
+        size: sizes.WOMEN.MEDIUM.id,
         price: 1500,
       },
       {
-        size: sizes.WOMEN.LARGE.slug,
+        size: sizes.WOMEN.LARGE.id,
         price: 1500,
       },
       {
-        size: sizes.WOMEN.XLARGE.slug,
+        size: sizes.WOMEN.XLARGE.id,
         price: 1500,
       },
       {
-        size: sizes.WOMEN.XXLARGE.slug,
+        size: sizes.WOMEN.XXLARGE.id,
         price: 1500,
       },
     ],
   },
   {
     color: colors.NAVY,
-    image: defaultProduct.images[0],
+    image: 'https://i.imgur.com/K4QTvQ6.png',
     sizes: [
       {
-        size: sizes.WOMEN.SMALL.slug,
+        size: sizes.WOMEN.SMALL.id,
         price: 1500,
       },
       {
-        size: sizes.WOMEN.MEDIUM.slug,
+        size: sizes.WOMEN.MEDIUM.id,
         price: 1500,
       },
       {
-        size: sizes.WOMEN.LARGE.slug,
+        size: sizes.WOMEN.LARGE.id,
         price: 1500,
       },
       {
-        size: sizes.WOMEN.XLARGE.slug,
+        size: sizes.WOMEN.XLARGE.id,
         price: 1500,
       },
       {
-        size: sizes.WOMEN.XXLARGE.slug,
+        size: sizes.WOMEN.XXLARGE.id,
         price: 1500,
       },
     ],

@@ -1,4 +1,4 @@
-const slugify = require('slugify')
+const slug = require('slug')
 
 const globalProduct = {
   attributes: ['name', 'category', 'size', 'color'],
@@ -13,9 +13,7 @@ const globalSku = {
 }
 
 const generateProductsAndSkus = ({ defaultProduct, defaultSku, skus }) => {
-  const productId = slugify(defaultProduct.name, {
-    lower: true,
-  })
+  const productId = slug(defaultProduct.name, slug.defaults.modes.rfc3986)
 
   const skusGenerated = skus.reduce((acc, { color, image, sizes }) => {
     return [
@@ -26,7 +24,7 @@ const generateProductsAndSkus = ({ defaultProduct, defaultSku, skus }) => {
         image,
         attributes: {
           ...defaultSku.attributes,
-          color: color.slug,
+          color: color.id,
           size,
           name: `${defaultSku.attributes.name} ${color.name}`,
         },

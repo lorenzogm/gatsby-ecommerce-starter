@@ -8,14 +8,15 @@ const defaultProduct = {
   description: 'description',
   images: [''],
   metadata: {
-    defaultColor: colors.WHITE.slug,
-    defaultSize: sizes.KIDS.YEARS_3_4.slug,
+    categoryId: categories.KIDS.id,
+    defaultColor: colors.WHITE.id,
+    defaultSize: sizes.KIDS.YEARS_3_4.id,
   },
 }
 
 const defaultSku = {
   attributes: {
-    category: categories.KIDS.slug,
+    category: categories.KIDS.id,
     name: defaultProduct.name,
   },
 }
@@ -26,23 +27,23 @@ const skus = [
     image: defaultProduct.images[0],
     sizes: [
       {
-        size: sizes.KIDS.YEARS_3_4.slug,
+        size: sizes.KIDS.YEARS_3_4.id,
         price: 1500,
       },
       {
-        size: sizes.KIDS.YEARS_5_6.slug,
+        size: sizes.KIDS.YEARS_5_6.id,
         price: 1500,
       },
       {
-        size: sizes.KIDS.YEARS_7_8.slug,
+        size: sizes.KIDS.YEARS_7_8.id,
         price: 1500,
       },
       {
-        size: sizes.KIDS.YEARS_9_10.slug,
+        size: sizes.KIDS.YEARS_9_10.id,
         price: 1500,
       },
       {
-        size: sizes.KIDS.YEARS_11_12.slug,
+        size: sizes.KIDS.YEARS_11_12.id,
         price: 1500,
       },
     ],

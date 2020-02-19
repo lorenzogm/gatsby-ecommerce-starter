@@ -8,14 +8,15 @@ const defaultProduct = {
   description: 'description',
   images: ['https://i.imgur.com/6aPtnF9.png'],
   metadata: {
-    defaultColor: colors.WHITE.slug,
-    defaultSize: sizes.BABIES.MONTHS_6_12.slug,
+    categoryId: categories.BABIES.id,
+    defaultColor: colors.WHITE.id,
+    defaultSize: sizes.BABIES.MONTHS_6_12.id,
   },
 }
 
 const defaultSku = {
   attributes: {
-    category: categories.BABIES.slug,
+    category: categories.BABIES.id,
     name: defaultProduct.name,
   },
 }
@@ -26,19 +27,19 @@ const skus = [
     image: defaultProduct.images[0],
     sizes: [
       {
-        size: sizes.BABIES.MONTHS_0_3.slug,
+        size: sizes.BABIES.MONTHS_0_3.id,
         price: 1500,
       },
       {
-        size: sizes.BABIES.MONTHS_3_6.slug,
+        size: sizes.BABIES.MONTHS_3_6.id,
         price: 1500,
       },
       {
-        size: sizes.BABIES.MONTHS_6_12.slug,
+        size: sizes.BABIES.MONTHS_6_12.id,
         price: 1500,
       },
       {
-        size: sizes.BABIES.MONTHS_12_18.slug,
+        size: sizes.BABIES.MONTHS_12_18.id,
         price: 1500,
       },
     ],
