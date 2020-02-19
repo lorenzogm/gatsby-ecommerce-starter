@@ -28,7 +28,10 @@ const owlBabyTShirt = require('./products/animals/owl-baby-t-shirt')
 const pigBabyBody = require('./products/animals/pig-baby-body')
 const pigBabyTShirt = require('./products/animals/pig-baby-t-shirt')
 
-// const roarrrWomenTShirt = require('./products/animals/roarrr-women-t-shirt')
+const saveAnimalsUnisexTShirt = require('./products/animals/save-animals-unisex-t-shirt')
+
+const saveAnimalsWomenTShirt = require('./products/animals/save-animals-women-t-shirt')
+
 const wildAnimalsBabyBody = require('./products/animals/wild-animals-baby-body')
 
 const seed = async () => {
@@ -59,6 +62,10 @@ const seed = async () => {
 
     await createProduct({ stripe, product: pigBabyBody })
     await createProduct({ stripe, product: pigBabyTShirt })
+
+    await createProduct({ stripe, product: saveAnimalsUnisexTShirt })
+
+    await createProduct({ stripe, product: saveAnimalsWomenTShirt })
 
     await createProduct({ stripe, product: wildAnimalsBabyBody })
 

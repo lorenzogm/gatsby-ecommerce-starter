@@ -55,22 +55,24 @@ const getProducts = skusList => {
       //   [sku.attributes.size]: [...acc.products[sku.product.id].skusBySize[sku.attributes.size], sku],
       // }
 
-      // productsByCategory
-      if (!acc.productsByCategory[sku.attributes.category]) {
-        acc.productsByCategory[sku.attributes.category] = []
+      // productsIdsByCategory
+      if (!acc.productsIdsByCategory[sku.attributes.category]) {
+        acc.productsIdsByCategory[sku.attributes.category] = []
       }
-      const productsByCategory = {
-        ...acc.productsByCategory,
+      const productsIdsByCategory = {
+        ...acc.productsIdsByCategory,
         [sku.attributes.category]: [
-          ...acc.productsByCategory[sku.attributes.category],
-          ...(acc.productsByCategory[sku.attributes.category].indexOf(sku.product.id) === -1 ? [sku.product.id] : []),
+          ...acc.productsIdsByCategory[sku.attributes.category],
+          ...(acc.productsIdsByCategory[sku.attributes.category].indexOf(sku.product.id) === -1
+            ? [sku.product.id]
+            : []),
         ],
       }
 
-      // listAllProducts
-      const listAllProducts = [
-        ...acc.listAllProducts,
-        ...(acc.listAllProducts.indexOf(sku.product.id) === -1 ? [sku.product.id] : []),
+      // productsIdsAll
+      const productsIdsAll = [
+        ...acc.productsIdsAll,
+        ...(acc.productsIdsAll.indexOf(sku.product.id) === -1 ? [sku.product.id] : []),
       ]
 
       return {
@@ -89,11 +91,11 @@ const getProducts = skusList => {
           ...acc.skus,
           [sku.id]: sku,
         },
-        listAllProducts,
-        productsByCategory,
+        productsIdsAll,
+        productsIdsByCategory,
       }
     },
-    { products: {}, skus: {}, listAllProducts: [], productsByCategory: {} },
+    { products: {}, skus: {}, productsIdsAll: [], productsIdsByCategory: {} },
   )
 }
 

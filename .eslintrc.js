@@ -6,7 +6,7 @@ module.exports = {
     "import/resolver": {
       "alias": [
         ["components", "./src/components"],
-        ["contants", "./src/contants"],
+        ["constants", "./src/constants"],
         ["context", "./src/context"],
         ["graphql", "./src/graphql"],
         ["pages", "./src/pages"],

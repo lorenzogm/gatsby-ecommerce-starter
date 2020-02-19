@@ -1,38 +1,18 @@
 import useFetchProductsFromGatsby from './useFetchProductsFromGatsby'
 import useFetchProductsFromStripe from './useFetchProductsFromStripe'
+import mergeProducts from './mergeProducts'
 
 const useFetchProducts = () => {
-  const { loading: loadingGatsby, data: dataGatsby } = useFetchProductsFromGatsby()
-  const { loading: loadingStripe, data: dataStripe } = useFetchProductsFromStripe()
+  const { data: dataGatsby } = useFetchProductsFromGatsby()
+  const { data: dataStripe } = useFetchProductsFromStripe()
 
-  const loading = loadingGatsby || loadingStripe
-
-  if (loading) {
-    return { loading }
-  }
-
-  const products = Object.values(dataGatsby.products).reduce(
-    (acc, product) => ({
-      ...acc,
-      [product.id]: { ...product, ...dataStripe.products[product.id] },
-    }),
-    {},
-  )
-
-  const skus = Object.values(dataGatsby.skus).reduce(
-    (acc, sku) => ({
-      ...acc,
-      [sku.id]: { ...sku, ...dataStripe.skus[sku.id], product: undefined, productId: sku.product.id },
-    }),
-    {},
-  )
+  const { products, productsIdsAll, productsIdsByCategory, skus } = mergeProducts({ dataGatsby, dataStripe })
 
   return {
-    loading,
     data: {
       products,
-      productsByCategory: dataStripe.productsByCategory,
-      listAllProducts: dataStripe.listAllProducts,
+      productsIdsAll,
+      productsIdsByCategory,
       skus,
     },
   }

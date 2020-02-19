@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 
@@ -9,13 +10,16 @@ import ImageLocal from 'components/ImageLocal'
 import * as S from './styles'
 import ProductPrice from './ProductPrice'
 import ProductName from './ProductName'
+import filterProductList from './filterProductList'
 
-const ProductList = () => {
-  const { products, skus, listAllProducts } = useProductsContext()
+const ProductList = ({ filters }) => {
+  const { products, skus, productsIdsAll, productsIdsByCategory } = useProductsContext()
+
+  const productsListFiltered = filterProductList({ productsIdsAll, productsIdsByCategory, filters })
 
   return (
     <GridList cols={4} cellHeight="auto">
-      {listAllProducts.map(productId => (
+      {productsListFiltered.map(productId => (
         <GridListTile key={productId}>
           <Link to={`/${skus[products[productId].skuDefaultId].fields.slug}`}>
             <ImageLocal localFiles={products[productId].localFiles} alt={products[productId].name} />
@@ -28,6 +32,16 @@ const ProductList = () => {
       ))}
     </GridList>
   )
+}
+
+ProductList.propTypes = {
+  filters: PropTypes.shape({
+    categoryIds: PropTypes.arrayOf(PropTypes.string.isRequired),
+  }),
+}
+
+ProductList.defaultProps = {
+  filters: {},
 }
 
 export default ProductList
