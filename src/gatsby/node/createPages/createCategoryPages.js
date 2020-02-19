@@ -3,8 +3,8 @@ const categories = require('../../../constants/categories')
 
 const createCategoryPages = async ({ graphql, createPage }) => {
   const { errors, data } = await graphql(`
-    {
-      allStripeSku {
+    query categoryList {
+      allStripeSku(filter: { product: { active: { eq: true } } }) {
         distinct(field: attributes___category)
       }
     }

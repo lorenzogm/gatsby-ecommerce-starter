@@ -2,25 +2,17 @@ const path = require('path')
 
 const createSkuDetailPages = async ({ graphql, createPage }) => {
   const { errors, data } = await graphql(`
-    {
-      allStripeSku {
+    query skuList {
+      allStripeSku(filter: { product: { active: { eq: true } } }) {
         edges {
           node {
             id
-            attributes {
-              color
-              size
-            }
             fields {
               slug
             }
             product {
-              id
               active
-              name
-              metadata {
-                defaultSize
-              }
+              id
             }
           }
         }
