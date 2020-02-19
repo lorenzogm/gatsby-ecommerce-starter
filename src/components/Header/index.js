@@ -8,8 +8,8 @@ import * as S from './styles'
 import NavBar from './NavBar'
 
 const Header = () => (
-  <header>
-    <AppBar position="static">
+  <AppBar position="sticky">
+    <header>
       <Container>
         <S.Toolbar>
           <S.LogoWrapper>
@@ -19,8 +19,8 @@ const Header = () => (
           <Cart />
         </S.Toolbar>
       </Container>
-    </AppBar>
-  </header>
+    </header>
+  </AppBar>
 )
 
 export default Header
