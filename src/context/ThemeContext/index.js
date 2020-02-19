@@ -20,6 +20,11 @@ const ThemeContextProvider = ({ children }) => {
     isDesktop: isUpMd,
   }
 
+  const loading = Object.values(data).find(value => value) === undefined
+  if (loading) {
+    return null
+  }
+
   return <ThemeContext.Provider value={data}>{children}</ThemeContext.Provider>
 }
 
