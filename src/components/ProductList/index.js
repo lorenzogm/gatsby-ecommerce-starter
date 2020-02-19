@@ -2,11 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import { useProductsContext } from 'context/ProductsContext'
 import Link from 'components/Link'
 import ImageLocal from 'components/ImageLocal'
 
+import theme from 'theme'
 import * as S from './styles'
 import ProductPrice from './ProductPrice'
 import ProductName from './ProductName'
@@ -17,8 +19,10 @@ const ProductList = ({ filters }) => {
 
   const productsListFiltered = filterProductList({ productsIdsAll, productsIdsByCategory, filters })
 
+  const matches = useMediaQuery(theme.breakpoints.up('sm'))
+
   return (
-    <GridList cols={4} cellHeight="auto">
+    <GridList cols={matches ? 4 : 2} cellHeight="auto">
       {productsListFiltered.map(productId => (
         <GridListTile key={productId}>
           <Link to={`/${skus[products[productId].skuDefaultId].fields.slug}`}>
