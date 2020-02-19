@@ -8,6 +8,10 @@ export const NavBar = styled(Box)`
   justify-content: flex-start;
   align-items: center;
   margin-left: ${theme.spacing(2)}px;
+
+  ${theme.breakpoints.down('sm')} {
+    display: none;
+  }
 `
 
 export const NavBarItem = styled(Box)`

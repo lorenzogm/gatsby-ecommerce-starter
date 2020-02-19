@@ -1,4 +1,5 @@
 import React from 'react'
+import AppBar from '@material-ui/core/AppBar'
 import Container from '@material-ui/core/Container'
 
 import Cart from './Cart'
@@ -8,7 +9,7 @@ import NavBar from './NavBar'
 
 const Header = () => (
   <header>
-    <S.AppBar position="static">
+    <AppBar position="static">
       <Container>
         <S.Toolbar>
           <S.LogoWrapper>
@@ -18,7 +19,7 @@ const Header = () => (
           <Cart />
         </S.Toolbar>
       </Container>
-    </S.AppBar>
+    </AppBar>
   </header>
 )
 
