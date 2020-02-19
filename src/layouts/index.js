@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import { ThemeProvider } from '@material-ui/core/styles'
 
 import Header from 'components/Header'
+import { ThemeContextProvider } from 'context/ThemeContext'
 import { ProductsContextProvider } from 'context/ProductsContext'
 import CartProvider from 'components/CartProvider'
 import Footer from 'components/Footer'
@@ -26,15 +27,17 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <ThemeProvider theme={theme}>
-        <ProductsContextProvider>
-          <CartProvider>
-            <S.Root>
-              <Header siteTitle={data.site.siteMetadata.title} />
-              <S.Container component="main">{children}</S.Container>
-              <Footer />
-            </S.Root>
-          </CartProvider>
-        </ProductsContextProvider>
+        <ThemeContextProvider>
+          <ProductsContextProvider>
+            <CartProvider>
+              <S.Root>
+                <Header siteTitle={data.site.siteMetadata.title} />
+                <S.Container component="main">{children}</S.Container>
+                <Footer />
+              </S.Root>
+            </CartProvider>
+          </ProductsContextProvider>
+        </ThemeContextProvider>
       </ThemeProvider>
     )}
   />
