@@ -21,10 +21,10 @@ const SkuDetailPage = ({ pageContext: { productId, skuId } }) => {
 
   return (
     <S.Main>
-      <S.ColumnLeft>
+      <S.ProductImage>
         <ImageLocal localFiles={sku.localFiles} alt={product.name} />
-      </S.ColumnLeft>
-      <S.ColumnRight>
+      </S.ProductImage>
+      <S.ProductDetails>
         <ProductName product={product} />
         <Divider />
         <SkuPrice sku={sku} />
@@ -32,7 +32,7 @@ const SkuDetailPage = ({ pageContext: { productId, skuId } }) => {
         {/* <Size product={product} /> */}
         <AddToCartButton product={product} />
         {/* <DeliveryConditions /> */}
-      </S.ColumnRight>
+      </S.ProductDetails>
     </S.Main>
   )
 }
