@@ -19,7 +19,7 @@ const ProductList = ({ filters }) => {
 
   const productsListFiltered = filterProductList({ productsIdsAll, productsIdsByCategory, filters })
 
-  const matches = useMediaQuery(theme.breakpoints.up('sm'))
+  const matches = useMediaQuery(theme.breakpoints.up('sm'), { noSsr: true })
 
   return (
     <GridList cols={matches ? 4 : 2} cellHeight="auto">
