@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { CartContext } from './CartProvider'
+import { useCartContext } from 'context/CartContext'
 
 const CartItem = ({ sku, quantity }) => {
-  const { remove } = useContext(CartContext)
+  const { remove } = useCartContext()
   return (
     <div key={sku.id} style={{ display: 'flex', margin: '1rem 0' }}>
       <img

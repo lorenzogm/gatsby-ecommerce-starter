@@ -12,7 +12,6 @@ const createSkuDetailPages = async ({ graphql, createPage }) => {
             }
             product {
               active
-              id
             }
           }
         }
@@ -28,7 +27,7 @@ const createSkuDetailPages = async ({ graphql, createPage }) => {
     createPage({
       path: sku.fields.slug,
       component: path.resolve('src/templates/SkuDetailPage/index.js'),
-      context: { productId: sku.product.id, skuId: sku.id },
+      context: { skuId: sku.id },
     })
   })
 }

@@ -5,9 +5,6 @@ import { useMediaQuery } from '@material-ui/core'
 
 const ThemeContext = React.createContext()
 
-/**
- * Wrapper to give Provider access to Sku nodes from Gatsby's GraphQL store.
- */
 const ThemeContextProvider = ({ children }) => {
   const isDownSm = useMediaQuery(theme.breakpoints.down('sm'))
   const isUpSm = useMediaQuery(theme.breakpoints.up('sm'))

@@ -1,55 +1,53 @@
-/* eslint-disable no-console */
 /* global localStorage */
 
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useProductsContext } from 'context/ProductsContext'
 
-export const CartContext = React.createContext()
+const CartContext = React.createContext()
 
-/**
- * Manages the shopping cart, which is persisted in local storage.
- * The cart and related methods are shared through context.
- */
-const CartProvider = ({ children }) => {
+const CartContextProvider = ({ children }) => {
   const { skus } = useProductsContext()
   const [mode, setMode] = useState(false)
 
-  /** Load cart from local storage. Initialize if not present or incorrect. */
+  // Load cart from local storage. Initialize if not present or incorrect
   const [contents, setContents] = useState(() => {
     let localCart
     try {
       localCart = JSON.parse(localStorage.getItem('cart'))
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err.message)
     }
     if (!localCart || !Array.isArray(localCart)) return []
     return localCart
   })
 
-  /** Save cart to local storage after load and on update */
+  // Save cart to local storage after load and on update
   useEffect(() => {
     try {
       localStorage.setItem('cart', JSON.stringify(contents))
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err)
     }
   }, [contents])
 
-  /** An array representing the cart in the form of [{sku}, quantity] */
+  // An array representing the cart in the form of [{sku}, quantity]
   const cart = contents.map(([id, quantity]) => [skus[id], quantity])
 
-  /** The number of items in the cart */
+  // The number of items in the cart
   // eslint-disable-next-line no-unused-vars
   const count = contents.reduce((sum, [_, quantity]) => sum + quantity, 0)
 
-  /** The total cost of the items in the cart */
+  // The total cost of the items in the cart
   const total = contents.reduce((sum, [id, quantity]) => (skus[id] ? sum + skus[id].price * quantity : sum), 0)
 
-  /** Returns true if `quantity` of item with `id` is available for purchase */
+  // Returns true if `quantity` of item with `id` is available for purchase
   function available(id, quantity = 1) {
     const sku = skus[id]
     if (!sku) {
+      // eslint-disable-next-line no-console
       console.error(`Sku with id ${id} not found`)
       return false
     }
@@ -68,7 +66,7 @@ const CartProvider = ({ children }) => {
     return false
   }
 
-  /** Sets quantity of item with `id` */
+  // Sets quantity of item with `id`
   function set(id, quantity) {
     if (!available(id)) return
 
@@ -84,19 +82,19 @@ const CartProvider = ({ children }) => {
     })
   }
 
-  /** Increments item with `id` by `quantity`, which defaults to 0 */
+  // Increments item with `id` by `quantity`, which defaults to 0
   function add(id, quantity = 1) {
     const currentItem = contents.find(item => item[0] === id)
     const currentQuantity = currentItem ? currentItem[1] : 0
     set(id, quantity + currentQuantity)
   }
 
-  /** Removes item with `id` */
+  // Removes item with `id`
   function remove(id) {
     setContents(state => state.filter(item => item[0] !== id))
   }
 
-  /** Toggles cart display, or sets to the boolean `force` if provided */
+  // Toggles cart display, or sets to the boolean `force` if provided
   function toggle(force) {
     setMode(prev => force || !prev)
   }
@@ -117,8 +115,18 @@ const CartProvider = ({ children }) => {
   return <CartContext.Provider value={{ ...ctx }}>{children}</CartContext.Provider>
 }
 
-CartProvider.propTypes = {
+CartContextProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default CartProvider
+function useCartContext() {
+  const context = React.useContext(CartContext)
+
+  if (context === undefined) {
+    throw new Error('useCartContext must be used within a CartContextProvider')
+  }
+
+  return context
+}
+
+export { useCartContext, CartContextProvider }

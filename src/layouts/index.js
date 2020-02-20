@@ -6,7 +6,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import Header from 'components/Header'
 import { ThemeContextProvider } from 'context/ThemeContext'
 import { ProductsContextProvider } from 'context/ProductsContext'
-import CartProvider from 'components/CartProvider'
+import { CartContextProvider } from 'context/CartContext'
 import Footer from 'components/Footer'
 import theme from 'theme'
 
@@ -29,13 +29,13 @@ const Layout = ({ children }) => (
       <ThemeProvider theme={theme}>
         <ThemeContextProvider>
           <ProductsContextProvider>
-            <CartProvider>
+            <CartContextProvider>
               <S.Root>
                 <Header siteTitle={data.site.siteMetadata.title} />
                 <S.Container component="main">{children}</S.Container>
                 <Footer />
               </S.Root>
-            </CartProvider>
+            </CartContextProvider>
           </ProductsContextProvider>
         </ThemeContextProvider>
       </ThemeProvider>

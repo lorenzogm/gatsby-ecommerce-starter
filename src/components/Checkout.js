@@ -1,12 +1,12 @@
 /* global fetch, localStorage, alert */
 
-import React, { useContext } from 'react'
+import React from 'react'
 import StripeCheckout from 'react-stripe-checkout'
-import { CartContext } from './CartProvider'
+import { useCartContext } from 'context/CartContext'
 import icon from '../images/gatsby-icon.png'
 
 const Checkout = () => {
-  const { cart, count, total } = useContext(CartContext)
+  const { cart, count, total } = useCartContext()
 
   const onToken = async (token, addresses) => {
     const items = cart.map(([sku, quantity]) => ({
