@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 
 import Typography from '@material-ui/core/Typography'
 
-const ProductName = ({ product }) => (
+const ProductName = ({ productSelected }) => (
   <Typography component="h1" variant="h4" color="secondary">
-    {product.name}
+    {productSelected.name}
   </Typography>
 )
 
 ProductName.propTypes = {
-  product: PropTypes.shape({
+  productSelected: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
 }

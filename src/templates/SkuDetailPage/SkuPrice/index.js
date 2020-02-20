@@ -5,11 +5,11 @@ import priceFormat from 'utils/priceFormat'
 
 import * as S from './styles'
 
-const SkuPrice = ({ sku }) => {
+const SkuPrice = ({ skuSelected }) => {
   return (
     <S.Box>
       <S.Price color="secondary" component="span" variant="h6">
-        {priceFormat(sku.price)}
+        {priceFormat(skuSelected.price)}
       </S.Price>
       <S.VAT component="span" variant="caption">
         VAT Included
@@ -19,7 +19,7 @@ const SkuPrice = ({ sku }) => {
 }
 
 SkuPrice.propTypes = {
-  sku: PropTypes.shape({ price: PropTypes.number.isRequired }).isRequired,
+  skuSelected: PropTypes.shape({ price: PropTypes.number.isRequired }).isRequired,
 }
 
 export default SkuPrice

@@ -1,6 +1,21 @@
 const mergeProducts = ({ dataGatsby, dataStripe }) => {
   if (!dataStripe) {
-    return dataGatsby
+    return {
+      products: dataGatsby.products,
+      productsIdsAll: dataGatsby.productsIdsAll,
+      productsIdsByCategory: dataGatsby.productsIdsByCategory,
+      skus: Object.keys(dataGatsby.skus).reduce(
+        (acc, skuId) => ({
+          ...acc,
+          [skuId]: {
+            ...dataGatsby.skus[skuId],
+            product: undefined,
+            productId: dataGatsby.skus[skuId].product.id,
+          },
+        }),
+        {},
+      ),
+    }
   }
 
   const products = Object.values(dataGatsby.products).reduce(

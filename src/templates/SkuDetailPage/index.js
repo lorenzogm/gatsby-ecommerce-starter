@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Divider from '@material-ui/core/Divider'
 
@@ -7,30 +7,40 @@ import ImageLocal from 'components/ImageLocal'
 
 import * as S from './styles'
 
-// import ProductColors from './ProductColors'
+import ProductColors from './ProductColors'
 import SkuPrice from './SkuPrice'
 import ProductName from './ProductName'
-
 import AddToCartButton from './AddToCartButton'
+import ProductSizes from './ProductSizes'
 
-const SkuDetailPage = ({ pageContext: { productId, skuId } }) => {
+const SkuDetailPage = ({ pageContext: { skuId } }) => {
   const { products, skus } = useProductsContext()
 
-  const product = products[productId]
-  const sku = skus[skuId]
+  // this sku does not contain the right size
+  // the size is handle in the local state
+  const skuSelected = skus[skuId]
+  const productSelected = products[skuSelected.productId]
+
+  const [sizeSelected, setSizeSelected] = useState(skuSelected.attributes.size)
+  const skuIdSelectedWithSize = productSelected.skuIds[skuSelected.attributes.color][sizeSelected]
 
   return (
     <S.Main>
       <S.ProductImage>
-        <ImageLocal localFiles={sku.localFiles} alt={product.name} />
+        <ImageLocal localFiles={skuSelected.localFiles} alt={productSelected.name} />
       </S.ProductImage>
       <S.ProductDetails>
-        <ProductName product={product} />
+        <ProductName productSelected={productSelected} />
         <Divider />
-        <SkuPrice sku={sku} />
-        {/* <ProductColors product={product} /> */}
-        {/* <Size product={product} /> */}
-        <AddToCartButton product={product} />
+        <SkuPrice skuSelected={skuSelected} />
+        <ProductColors productSelected={productSelected} skus={skus} skuSelected={skuSelected} />
+        <ProductSizes
+          productSelected={productSelected}
+          skuSelected={skuSelected}
+          sizeSelected={sizeSelected}
+          setSizeSelected={setSizeSelected}
+        />
+        <AddToCartButton skuIdSelectedWithSize={skuIdSelectedWithSize} />
         {/* <DeliveryConditions /> */}
       </S.ProductDetails>
     </S.Main>
@@ -39,7 +49,6 @@ const SkuDetailPage = ({ pageContext: { productId, skuId } }) => {
 
 SkuDetailPage.propTypes = {
   pageContext: PropTypes.shape({
-    productId: PropTypes.string.isRequired,
     skuId: PropTypes.string.isRequired,
   }).isRequired,
 }
