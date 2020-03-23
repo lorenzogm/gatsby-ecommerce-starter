@@ -60,7 +60,7 @@ const defaultProduct = {
   images: [skus[0].image],
   metadata: {
     categoryId: categories.KIDS.id,
-    defaultColor: colors.WHITE.id,
+    defaultColor: colors.PINK_HOT.id,
     defaultSize: sizes.KIDS.YEARS_3_4.id,
   },
 }

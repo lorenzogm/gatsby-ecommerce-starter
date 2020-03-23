@@ -5,7 +5,7 @@ const sizes = require('../../../../src/constants/sizes')
 const skus = [
   {
     color: colors.WHITE,
-    images: 'https://i.imgur.com/B8JtwyA.png',
+    image: 'https://i.imgur.com/B8JtwyA.png',
     sizes: [
       {
         size: sizes.BABIES.MONTHS_0_3.id,
