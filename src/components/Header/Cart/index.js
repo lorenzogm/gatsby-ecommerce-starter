@@ -2,39 +2,31 @@ import React from 'react'
 import Button from '@material-ui/core/Button'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 
-import Checkout from 'components/Checkout'
-import CartItem from 'components/CartItem'
-import { useCartContext } from 'context/CartContext'
+import CartPreview from './CartPreview'
 
 import * as S from './styles'
 
 const Cart = () => {
-  // const { cart, count, toggle } = useCartContext()
-
   const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
+  const popoverId = 'mouse-over-popover'
 
   const handlePopoverOpen = event => {
-    console.log('handlePopoverOpen')
     setAnchorEl(event.currentTarget)
   }
 
   const handlePopoverClose = () => {
-    console.log('handlePopoverClose')
     setAnchorEl(null)
   }
-
-  const open = Boolean(anchorEl)
-  console.log(open)
-  const popoverId = 'mouse-over-popover'
 
   return (
     <>
       <Button
         aria-describedby="open-cart"
         aria-haspopup="true"
-        aria-owns={open && popoverId}
-        // onMouseEnter={handlePopoverOpen}
-        // onMouseLeave={handlePopoverClose}
+        aria-owns={open ? popoverId : undefined}
+        onMouseEnter={handlePopoverOpen}
+        onMouseLeave={handlePopoverClose}
       >
         <ShoppingCartIcon />
       </Button>
@@ -42,7 +34,7 @@ const Cart = () => {
         id={popoverId}
         open={open}
         anchorEl={anchorEl}
-        // onClose={handlePopoverClose}
+        onClose={handlePopoverClose}
         disableRestoreFocus
         anchorOrigin={{
           vertical: 'bottom',
@@ -53,10 +45,7 @@ const Cart = () => {
           horizontal: 'right',
         }}
       >
-        <h1>cart</h1>
-        {/* {count === 0 && <span>No items in cart.</span>}
-        {cart.map(([sku, quantity]) => sku && <CartItem key={sku.id} sku={sku} quantity={quantity} />)}
-        <Checkout /> */}
+        <CartPreview />
       </S.Popover>
     </>
   )
