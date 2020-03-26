@@ -2,35 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import sizes from 'constants/sizes'
-
-import * as S from './styles'
+import FormSelect from 'components/FormSelect'
 
 const ProductSizes = ({ productSelected, skuSelected, sizeSelected, setSizeSelected }) => {
-  const sizesIds = Object.keys(productSelected.skuIds[skuSelected.attributes.color])
+  const options = Object.keys(productSelected.skuIds[skuSelected.attributes.color]).map(sizeId => ({
+    key: sizeId,
+    value: sizeId,
+    name: sizes[skuSelected.attributes.category][sizeId].name,
+  }))
 
-  const handleChange = event => {
-    setSizeSelected(event.target.value)
-  }
-
-  return (
-    <S.FormControl>
-      <S.NativeSelect
-        disableUnderline
-        value={sizeSelected}
-        onChange={handleChange}
-        inputProps={{
-          name: 'size',
-          id: 'size',
-        }}
-      >
-        {sizesIds.map(sizeId => (
-          <option key={sizeId} value={sizeId}>
-            {sizes[skuSelected.attributes.category][sizeId].name}
-          </option>
-        ))}
-      </S.NativeSelect>
-    </S.FormControl>
-  )
+  return <FormSelect name="size" valueSelected={sizeSelected} setValueSelected={setSizeSelected} options={options} />
 }
 
 ProductSizes.propTypes = {
