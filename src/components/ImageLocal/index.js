@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import Image from 'components/Image'
 
+import * as S from './styles'
+
 const ImageLocal = ({ localFiles, alt }) => {
   if (!localFiles || !localFiles[0] || !localFiles[0].childImageSharp || !localFiles[0].childImageSharp.fluid) {
     // eslint-disable-next-line no-console
@@ -10,7 +12,11 @@ const ImageLocal = ({ localFiles, alt }) => {
     return null
   }
 
-  return <Image fluid={localFiles[0].childImageSharp.fluid} alt={alt} />
+  return (
+    <S.Background>
+      <Image fluid={localFiles[0].childImageSharp.fluid} alt={alt} />
+    </S.Background>
+  )
 }
 
 ImageLocal.propTypes = {
