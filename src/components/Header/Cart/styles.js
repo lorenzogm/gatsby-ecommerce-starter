@@ -1,10 +1,9 @@
 import styled from 'styled-components'
-import Popover_ from '@material-ui/core/Popover'
+import Badge_ from '@material-ui/core/Badge'
 
 import theme from 'theme'
 
 // eslint-disable-next-line import/prefer-default-export
-export const Popover = styled(Popover_)`
-  pointer-events: none;
-  padding: ${theme.spacing(1)}px;
+export const Badge = styled(Badge_)`
+  margin-right: ${theme.spacing(2)}px;
 `
