@@ -42,7 +42,7 @@ function useDispatch() {
 }
 
 function useCartContext() {
-  return { state: useState(), dispatch: useDispatch() }
+  return [useState(), useDispatch()]
 }
 
 export { useCartContext, CartContextProvider }

@@ -7,7 +7,7 @@ import { useCartContext } from 'context/CartContext'
 import * as S from './styles'
 
 const AddToCartButton = ({ skuIdSelectedWithSize }) => {
-  const { dispatch } = useCartContext()
+  const [, dispatch] = useCartContext()
 
   const onClick = () => {
     dispatch({ type: 'ADD_TO_CART', payload: { skuId: skuIdSelectedWithSize, quantity: 1 } })

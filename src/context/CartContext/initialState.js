@@ -1,13 +1,18 @@
 /* global localStorage */
 
+import getCartSkuQuantity from './reducer/getCartSkuQuantity'
+
 const getCartFromLocalStorage = () => {
   try {
-    const cart = JSON.parse(localStorage.getItem('cart'))
-    if (Array.isArray(cart)) {
-      return cart
+    const cartSkuList = JSON.parse(localStorage.getItem('cartSkuList'))
+    if (Array.isArray(cartSkuList)) {
+      return {
+        cartSkuList,
+        cartSkuQuantity: getCartSkuQuantity(cartSkuList),
+      }
     }
 
-    return []
+    return { cartSkuList: [], cartSkuQuantity: 0 }
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error(err.message)
@@ -15,6 +20,6 @@ const getCartFromLocalStorage = () => {
   }
 }
 
-const initialState = { cart: getCartFromLocalStorage() }
+const initialState = { ...getCartFromLocalStorage() }
 
 export default initialState
