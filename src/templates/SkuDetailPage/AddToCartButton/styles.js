@@ -1,4 +1,4 @@
-import Button_ from '@material-ui/core/Button'
+import Button_ from 'components/Button'
 import styled from 'styled-components'
 import Box_ from '@material-ui/core/Box'
 
