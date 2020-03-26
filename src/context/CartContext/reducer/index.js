@@ -1,5 +1,6 @@
 import addToCart from './addToCart'
 import setSkuQuantity from './setSkuQuantity'
+import removeFromCart from './removeFromCart'
 
 const reducer = (state, action) => {
   if (!action.payload) {
@@ -14,6 +15,9 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
       return addToCart({ state, action })
+
+    case 'REMOVE_FROM_CART':
+      return removeFromCart({ state, action })
 
     case 'SET_SKU_QUANTITY':
       return setSkuQuantity({ state, action })
