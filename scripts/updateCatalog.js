@@ -3,9 +3,7 @@ const stripe = require('stripe')('sk_test_558JZshYB9voUZRf4u51NRJB00TnEWkTQC')
 
 stripe.setMaxNetworkRetries(2)
 
-const deleteAllSkus = require('./deleteAllSkus')
-const deleteAllProducts = require('./deleteAllProducts')
-const createProduct = require('./createProduct')
+const updateProduct = require('./updateProduct')
 
 // animals
 
@@ -68,63 +66,61 @@ const seed = async () => {
   console.log('')
 
   try {
-    await deleteAllSkus({ stripe })
-    await deleteAllProducts({ stripe })
-
     // animals
 
     // animals-baby-bodies
-    await createProduct({ stripe, product: dogAndCatBabyBody })
-    await createProduct({ stripe, product: foxBabyBody })
-    await createProduct({ stripe, product: lionBabyBody })
-    await createProduct({ stripe, product: myFriendsBabyBody })
-    await createProduct({ stripe, product: owlBabyBody })
-    await createProduct({ stripe, product: pigBabyBody })
-    await createProduct({ stripe, product: wildAnimalsBabyBody })
+    await updateProduct({ stripe, product: dogAndCatBabyBody })
+    await updateProduct({ stripe, product: foxBabyBody })
+    await updateProduct({ stripe, product: lionBabyBody })
+    await updateProduct({ stripe, product: myFriendsBabyBody })
+    await updateProduct({ stripe, product: owlBabyBody })
+    await updateProduct({ stripe, product: pigBabyBody })
+    await updateProduct({ stripe, product: wildAnimalsBabyBody })
 
     // animals-baby-t-shirts
-    await createProduct({ stripe, product: dogAndCatBabyTShirt })
-    await createProduct({ stripe, product: foxBabyTShirt })
-    await createProduct({ stripe, product: lionBabyTShirt })
-    await createProduct({ stripe, product: myFriendsBabyTShirt })
-    await createProduct({ stripe, product: owlBabyTShirt })
-    await createProduct({ stripe, product: pigBabyTShirt })
+    await updateProduct({ stripe, product: dogAndCatBabyTShirt })
+    await updateProduct({ stripe, product: foxBabyTShirt })
+    await updateProduct({ stripe, product: lionBabyTShirt })
+    await updateProduct({ stripe, product: myFriendsBabyTShirt })
+    await updateProduct({ stripe, product: owlBabyTShirt })
+    await updateProduct({ stripe, product: pigBabyTShirt })
 
     // animals-kid-t-shirts
-    await createProduct({ stripe, product: dogAndCatKidTShirt })
-    await createProduct({ stripe, product: foxKidTShirt })
-    await createProduct({ stripe, product: lionKidTShirt })
-    await createProduct({ stripe, product: myFriendsKidTShirt })
-    await createProduct({ stripe, product: owlKidTShirt })
-    await createProduct({ stripe, product: pigKidTShirt })
+    await updateProduct({ stripe, product: dogAndCatKidTShirt })
+    await updateProduct({ stripe, product: foxKidTShirt })
+    await updateProduct({ stripe, product: lionKidTShirt })
+    await updateProduct({ stripe, product: myFriendsKidTShirt })
+    await updateProduct({ stripe, product: owlKidTShirt })
+    await updateProduct({ stripe, product: pigKidTShirt })
+
     // animals-unisex-t-shirts
-    await createProduct({ stripe, product: saveAnimalsUnisexTShirt })
+    await updateProduct({ stripe, product: saveAnimalsUnisexTShirt })
 
     // animals-women-t-shirts
-    await createProduct({ stripe, product: saveAnimalsWomenTShirt })
+    await updateProduct({ stripe, product: saveAnimalsWomenTShirt })
 
     // dinos
 
     // dinos-baby-bodies
-    await createProduct({ stripe, product: roarrrBabyBody })
-    await createProduct({ stripe, product: roarrrShapeBabyBody })
-    await createProduct({ stripe, product: wildDinosBabyBody })
-    await createProduct({ stripe, product: wildDinosShapeBabyBody })
+    await updateProduct({ stripe, product: roarrrBabyBody })
+    await updateProduct({ stripe, product: roarrrShapeBabyBody })
+    await updateProduct({ stripe, product: wildDinosBabyBody })
+    await updateProduct({ stripe, product: wildDinosShapeBabyBody })
 
     // dinos-baby-t-shirts
-    await createProduct({ stripe, product: roarrrBabyTShirt })
-    await createProduct({ stripe, product: roarrrShapeBabyTShirt })
+    await updateProduct({ stripe, product: roarrrBabyTShirt })
+    await updateProduct({ stripe, product: roarrrShapeBabyTShirt })
 
     // dinos-kid-t-shirts
-    await createProduct({ stripe, product: roarrrKidTShirt })
-    await createProduct({ stripe, product: roarrrShapeKidTShirt })
-    await createProduct({ stripe, product: wildDinosKidTShirt })
+    await updateProduct({ stripe, product: roarrrKidTShirt })
+    await updateProduct({ stripe, product: roarrrShapeKidTShirt })
+    await updateProduct({ stripe, product: wildDinosKidTShirt })
 
     // dinos-unisex-t-shirts
-    await createProduct({ stripe, product: roarrrShapeUnisexTShirt })
+    await updateProduct({ stripe, product: roarrrShapeUnisexTShirt })
 
     // dinos-women-t-shirts
-    await createProduct({ stripe, product: roarrrShapeWomenTShirt })
+    await updateProduct({ stripe, product: roarrrShapeWomenTShirt })
   } catch (error) {
     console.error(error)
   }

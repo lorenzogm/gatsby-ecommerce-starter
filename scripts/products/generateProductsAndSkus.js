@@ -21,6 +21,7 @@ const generateProductsAndSkus = ({ defaultProduct, defaultSku, skus }) => {
       ...sizes.map(({ size, price }) => ({
         ...globalSku,
         ...defaultSku,
+        id: slug(`${defaultSku.attributes.name} ${color.name} ${size}`, slug.defaults.modes.rfc3986),
         image,
         attributes: {
           ...defaultSku.attributes,
