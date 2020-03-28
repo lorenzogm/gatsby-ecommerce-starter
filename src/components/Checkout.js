@@ -36,7 +36,7 @@ const Checkout = () => {
             },
           },
         }),
-      }).then(response => response.json())
+      }).then((response) => response.json())
     } catch (err) {
       // eslint-disable-next-line no-alert
       alert(err.message)

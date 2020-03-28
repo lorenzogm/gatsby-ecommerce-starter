@@ -9,8 +9,8 @@ const deleteAllProducts = async ({ stripe }) => {
 
     const productListDelete = await Promise.all(
       productList.data
-        .filter(product => productSkip.indexOf(product.id) === -1)
-        .map(product => stripe.products.del(product.id)),
+        .filter((product) => productSkip.indexOf(product.id) === -1)
+        .map((product) => stripe.products.del(product.id)),
     )
 
     // eslint-disable-next-line no-console
@@ -21,7 +21,7 @@ const deleteAllProducts = async ({ stripe }) => {
       break
     }
 
-    await new Promise(r => setTimeout(r, 1000))
+    await new Promise((r) => setTimeout(r, 1000))
   }
 }
 

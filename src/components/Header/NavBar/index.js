@@ -13,7 +13,7 @@ const navBarItems = [
 
 const NavBar = () => (
   <S.NavBar>
-    {navBarItems.map(navBarItem => (
+    {navBarItems.map((navBarItem) => (
       <S.NavBarItem key={navBarItem.slug}>
         <Link to={`/${navBarItem.slug}`}>
           <Typography component="h2" variant="button">

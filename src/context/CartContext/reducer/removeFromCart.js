@@ -8,7 +8,7 @@ const removeFromCart = ({ state, action }) => {
     console.error('Undefined "cart" in state', state)
   }
 
-  const cartSkuList = state.cartSkuList.filter(item => item.skuId !== action.payload.skuId)
+  const cartSkuList = state.cartSkuList.filter((item) => item.skuId !== action.payload.skuId)
 
   localStorage.setItem('cartSkuList', JSON.stringify(cartSkuList))
 

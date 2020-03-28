@@ -25,7 +25,7 @@ const Layout = ({ children }) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <ThemeProvider theme={theme}>
         <ThemeContextProvider>
           <ProductsContextProvider>

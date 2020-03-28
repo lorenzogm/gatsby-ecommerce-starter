@@ -5,7 +5,7 @@ import sizes from 'constants/sizes'
 import FormSelect from 'components/FormSelect'
 
 const ProductSizes = ({ productSelected, skuSelected, sizeSelected, setSizeSelected }) => {
-  const options = Object.keys(productSelected.skuIds[skuSelected.attributes.color]).map(sizeId => ({
+  const options = Object.keys(productSelected.skuIds[skuSelected.attributes.color]).map((sizeId) => ({
     key: sizeId,
     value: sizeId,
     name: sizes[skuSelected.attributes.category][sizeId].name,

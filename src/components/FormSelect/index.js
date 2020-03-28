@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import * as S from './styles'
 
 const FormSelect = ({ name, valueSelected, setValueSelected, options }) => {
-  const handleChange = event => {
+  const handleChange = (event) => {
     setValueSelected(event.target.value)
   }
 

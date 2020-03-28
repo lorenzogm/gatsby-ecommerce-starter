@@ -38,7 +38,7 @@ const generateProductsAndSkus = ({ defaultProduct, defaultSku, skus }) => {
     ...globalProduct,
     ...defaultProduct,
     id: productId,
-    skus: skusGenerated.map(sku => ({
+    skus: skusGenerated.map((sku) => ({
       ...sku,
       product: productId,
     })),

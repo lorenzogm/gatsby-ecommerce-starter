@@ -9,7 +9,7 @@ const addToCart = ({ state, action }) => {
   }
 
   // eslint-disable-next-line no-case-declarations
-  const index = state.cartSkuList.findIndex(item => item.skuId === action.payload.skuId)
+  const index = state.cartSkuList.findIndex((item) => item.skuId === action.payload.skuId)
   // eslint-disable-next-line no-case-declarations
   const cartSkuList = [...state.cartSkuList]
 

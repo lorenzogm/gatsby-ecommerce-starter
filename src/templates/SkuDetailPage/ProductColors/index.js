@@ -24,7 +24,7 @@ const ProductColor = ({ productSelected, skus, skuSelected }) => {
         {`Color: ${colors[skuSelected.attributes.color].name}`}
       </Typography>
       <S.Row>
-        {colorIds.map(colorId => {
+        {colorIds.map((colorId) => {
           const skuId = productSelected.skuIds[colorId][productSelected.metadata.defaultSize]
           const sku = skus[skuId]
 

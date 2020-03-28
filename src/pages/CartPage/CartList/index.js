@@ -22,7 +22,7 @@ const CartList = () => {
 
   return (
     <List>
-      {cartSkuList.map(item => {
+      {cartSkuList.map((item) => {
         const sku = skus[item.skuId]
 
         if (!sku || !sku.attributes) {
@@ -55,7 +55,7 @@ const CartList = () => {
               <FormSelect
                 name="quantity"
                 valueSelected={item.quantity}
-                setValueSelected={value =>
+                setValueSelected={(value) =>
                   dispatch({ type: 'SET_SKU_QUANTITY', payload: { skuId: sku.id, quantity: value } })
                 }
                 options={options}

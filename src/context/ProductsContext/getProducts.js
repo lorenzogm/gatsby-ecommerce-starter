@@ -1,4 +1,4 @@
-const getProducts = skusList => {
+const getProducts = (skusList) => {
   return skusList.reduce(
     (acc, sku) => {
       if (!sku.product.active) {

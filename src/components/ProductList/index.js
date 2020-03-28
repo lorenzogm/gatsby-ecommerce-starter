@@ -21,7 +21,7 @@ const ProductList = ({ filters }) => {
 
   return (
     <GridList cols={isMobile ? 2 : 4} cellHeight="auto">
-      {productsListFiltered.map(productId => (
+      {productsListFiltered.map((productId) => (
         <GridListTile key={productId}>
           <Link to={`/${skus[products[productId].skuDefaultId].fields.slug}`}>
             <ImageLocal localFiles={products[productId].localFiles} alt={products[productId].name} />

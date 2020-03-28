@@ -8,7 +8,7 @@ const createProduct = async ({ stripe, product: { skus, ...rest } }) => {
   console.log(`"${rest.name}" product created`)
 
   await createSkusForOneProduct({ stripe, product: { ...rest, skus } })
-  await new Promise(r => setTimeout(r, 1000))
+  await new Promise((r) => setTimeout(r, 1000))
 }
 
 module.exports = createProduct

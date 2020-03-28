@@ -1,12 +1,10 @@
 import styled from 'styled-components'
-
 import ListItem_ from '@material-ui/core/ListItem'
 import ListItemAvatar_ from '@material-ui/core/ListItemAvatar'
 import ListItemText_ from '@material-ui/core/ListItemText'
 
 import theme from 'theme'
 
-// eslint-disable-next-line import/prefer-default-export
 export const ListItem = styled(ListItem_)`
   align-items: flex-start;
   padding-left: ${theme.spacing(0)}px;

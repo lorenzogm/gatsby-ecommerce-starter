@@ -21,7 +21,7 @@ const createCategoryPages = async ({ graphql, createPage }) => {
 
   const categoriesIdsUnique = [...new Set(categoriesIds)]
 
-  categoriesIdsUnique.forEach(categoryId => {
+  categoriesIdsUnique.forEach((categoryId) => {
     createPage({
       path: categories[categoryId].slug,
       component: path.resolve('src/templates/CategoryPage/index.js'),

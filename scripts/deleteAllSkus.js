@@ -8,7 +8,7 @@ const deleteAllSkus = async ({ stripe }) => {
     const skuList = await stripe.skus.list({ limit: 10 })
 
     const skuListDelete = await Promise.all(
-      skuList.data.filter(sku => skuSkip.indexOf(sku.id) === -1).map(sku => stripe.skus.del(sku.id)),
+      skuList.data.filter((sku) => skuSkip.indexOf(sku.id) === -1).map((sku) => stripe.skus.del(sku.id)),
     )
 
     // eslint-disable-next-line no-console
@@ -19,7 +19,7 @@ const deleteAllSkus = async ({ stripe }) => {
       break
     }
 
-    await new Promise(r => setTimeout(r, 1000))
+    await new Promise((r) => setTimeout(r, 1000))
   }
 }
 

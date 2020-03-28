@@ -1,6 +1,6 @@
 const stripe = require('stripe')('sk_test_558JZshYB9voUZRf4u51NRJB00TnEWkTQC')
-const animals = require('./products/animals')
 const fs = require('fs')
+const animals = require('./products/animals')
 
 const fileUpload = async ({ path, fileName }) => {
   const fp = await fs.readFileSync(path)
