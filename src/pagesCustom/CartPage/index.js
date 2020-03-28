@@ -6,8 +6,8 @@ import { useCartContext } from 'context/CartContext'
 import { useThemeContext } from 'context/ThemeContext'
 
 import CartTitle from './CartTitle'
-// import CartList from './CartList'
-// import CartSummary from './CartSummary'
+import CartList from './CartList'
+import CartSummary from './CartSummary'
 import CartEmpty from './CartEmpty'
 import * as S from './styles'
 
@@ -27,11 +27,13 @@ const CartPage = () => {
         <Grid item xs={isMobile ? 12 : 8}>
           <S.Paper elevation={2}>
             <CartTitle />
-            {/* <CartList /> */}
+            <CartList />
           </S.Paper>
         </Grid>
         <Grid item xs={isMobile ? 12 : 4}>
-          <S.Paper elevation={2}>{/* <CartSummary /> */}</S.Paper>
+          <S.Paper elevation={2}>
+            <CartSummary />
+          </S.Paper>
         </Grid>
       </Grid>
     </>
