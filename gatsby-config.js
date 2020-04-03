@@ -25,6 +25,7 @@ module.exports = {
         context: path.join(__dirname, 'src/context'),
         graphql: path.join(__dirname, 'src/graphql'),
         pages: path.join(__dirname, 'src/pages'),
+        services: path.join(__dirname, 'src/services'),
         theme: path.join(__dirname, 'src/theme'),
         utils: path.join(__dirname, 'src/utils'),
       },

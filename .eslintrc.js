@@ -2,24 +2,25 @@ module.exports = {
   // extends: 'airbnb',
   extends: ['airbnb', 'prettier', 'prettier/react'],
   plugins: ['prettier'],
-  "settings": {
-    "import/resolver": {
-      "alias": [
-        ["components", "./src/components"],
-        ["constants", "./src/constants"],
-        ["context", "./src/context"],
-        ["graphql", "./src/graphql"],
-        ["pages", "./src/pages"],
-        ["theme", "./src/theme"],
-        ["utils", "./src/utils"],
-      ]
-    }
+  settings: {
+    'import/resolver': {
+      alias: [
+        ['components', './src/components'],
+        ['constants', './src/constants'],
+        ['context', './src/context'],
+        ['graphql', './src/graphql'],
+        ['pages', './src/pages'],
+        ['services', './src/services'],
+        ['theme', './src/theme'],
+        ['utils', './src/utils'],
+      ],
+    },
   },
   rules: {
     'no-unused-vars': 'warn',
     'prettier/prettier': [
       'error',
-        {
+      {
         trailingComma: 'all',
         semi: false,
         singleQuote: true,
