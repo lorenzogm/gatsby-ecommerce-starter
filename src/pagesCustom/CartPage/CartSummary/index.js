@@ -7,6 +7,7 @@ import priceFormat from 'utils/priceFormat'
 
 import * as S from './styles'
 import getCartSubtotal from './getCartSubtotal'
+import CheckoutButton from './CheckoutButton'
 
 const CartSummary = () => {
   const { skus } = useProductsContext()
@@ -28,6 +29,9 @@ const CartSummary = () => {
       <S.Row>
         <Typography>Total (VAT Included)</Typography>
         <Typography>{priceFormat(cartSubtotal)}</Typography>
+      </S.Row>
+      <S.Row>
+        <CheckoutButton />
       </S.Row>
     </>
   )
