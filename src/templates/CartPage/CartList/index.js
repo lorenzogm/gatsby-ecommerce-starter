@@ -6,6 +6,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 
 import { useCartContext } from 'context/CartContext'
 import { useProductsContext } from 'context/ProductsContext'
+import { useThemeContext } from 'context/ThemeContext'
 import Button from 'components/Button'
 import FormSelect from 'components/FormSelect'
 import ImageLocal from 'components/ImageLocal'
@@ -17,6 +18,7 @@ import * as S from './styles'
 const CartList = () => {
   const { skus } = useProductsContext()
   const [{ cartSkuList }, dispatch] = useCartContext()
+  const { isMobile } = useThemeContext()
 
   const options = Array.from({ length: 10 }, (v, i) => ({ key: i + 1, value: i + 1, name: i + 1 }))
 
@@ -34,6 +36,17 @@ const CartList = () => {
           dispatch({ type: 'REMOVE_FROM_CART', payload: { skuId: sku.id } })
         }
 
+        const formSelectQuantity = (
+          <FormSelect
+            name="quantity"
+            valueSelected={item.quantity}
+            setValueSelected={(value) =>
+              dispatch({ type: 'SET_SKU_QUANTITY', payload: { skuId: sku.id, quantity: value } })
+            }
+            options={options}
+          />
+        )
+
         return (
           <S.ListItem key={item.skuId}>
             <S.ListItemAvatar>
@@ -46,21 +59,14 @@ const CartList = () => {
                 secondary={`Color: ${colors[color].name} - Size: ${sizes[category][size].name}`}
               />
 
+              {isMobile && formSelectQuantity}
+
               <Button variant="buttonless" startIcon={<DeleteIcon fontSize="small" />} onClick={onClick}>
                 <Typography variant="caption">Remove</Typography>
               </Button>
             </div>
 
-            <ListItemSecondaryAction>
-              <FormSelect
-                name="quantity"
-                valueSelected={item.quantity}
-                setValueSelected={(value) =>
-                  dispatch({ type: 'SET_SKU_QUANTITY', payload: { skuId: sku.id, quantity: value } })
-                }
-                options={options}
-              />
-            </ListItemSecondaryAction>
+            {!isMobile && <ListItemSecondaryAction>{formSelectQuantity}</ListItemSecondaryAction>}
           </S.ListItem>
         )
       })}
