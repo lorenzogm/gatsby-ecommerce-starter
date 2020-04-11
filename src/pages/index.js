@@ -1,3 +1,3 @@
-import HomePage from '../pagesCustom/HomePage'
+import HomePage from '../templates/HomePage'
 
 export default HomePage

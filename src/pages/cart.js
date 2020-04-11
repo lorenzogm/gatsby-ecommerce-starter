@@ -1,3 +1,3 @@
-import CartPage from '../pagesCustom/CartPage'
+import CartPage from '../templates/CartPage'
 
 export default CartPage

@@ -1,3 +1,3 @@
-import OrderSuccessPage from '../pagesCustom/OrderSuccessPage'
+import OrderSuccessPage from '../templates/OrderSuccessPage'
 
 export default OrderSuccessPage
