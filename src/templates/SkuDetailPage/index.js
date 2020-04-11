@@ -4,6 +4,7 @@ import Divider from '@material-ui/core/Divider'
 
 import { useProductsContext } from 'context/ProductsContext'
 import ImageLocal from 'components/ImageLocal'
+import { useThemeContext } from 'context/ThemeContext'
 
 import * as S from './styles'
 
@@ -15,6 +16,7 @@ import ProductSizes from './ProductSizes'
 
 const SkuDetailPage = ({ pageContext: { skuId } }) => {
   const { products, skus } = useProductsContext()
+  const { isMobile } = useThemeContext()
 
   // this sku does not contain the right size
   // the size is handle in the local state
@@ -26,7 +28,7 @@ const SkuDetailPage = ({ pageContext: { skuId } }) => {
 
   return (
     <S.Main>
-      <S.ProductImage>
+      <S.ProductImage isMobile={isMobile}>
         <ImageLocal localFiles={skuSelected.localFiles} alt={productSelected.name} />
       </S.ProductImage>
       <S.ProductDetails>
