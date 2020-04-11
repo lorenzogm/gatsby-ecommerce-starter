@@ -9,10 +9,11 @@ const getCartFromLocalStorage = () => {
       return {
         cartSkuList,
         cartSkuQuantity: getCartSkuQuantity(cartSkuList),
+        skuSizeSelected: null,
       }
     }
 
-    return { cartSkuList: [], cartSkuQuantity: 0 }
+    return { cartSkuList: [], cartSkuQuantity: 0, skuSizeSelected: null }
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error(err.message)

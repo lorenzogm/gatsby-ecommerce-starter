@@ -2,6 +2,7 @@ import addToCart from './addToCart'
 import emptyCart from './emptyCart'
 import setSkuQuantity from './setSkuQuantity'
 import removeFromCart from './removeFromCart'
+import updateSkuSizeSelected from './updateSkuSizeSelected'
 
 const reducer = (state, action) => {
   if (!action.payload) {
@@ -25,6 +26,9 @@ const reducer = (state, action) => {
 
     case 'SET_SKU_QUANTITY':
       return setSkuQuantity({ state, action })
+
+    case 'UPDATE_SKU_SIZE_SELECTED':
+      return updateSkuSizeSelected({ state, action })
 
     default:
       return state

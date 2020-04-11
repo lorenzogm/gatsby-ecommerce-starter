@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Divider from '@material-ui/core/Divider'
 
+import { useCartContext } from 'context/CartContext'
 import { useProductsContext } from 'context/ProductsContext'
 import ImageLocal from 'components/ImageLocal'
 import { useThemeContext } from 'context/ThemeContext'
@@ -15,6 +16,7 @@ import AddToCartButton from './AddToCartButton'
 import ProductSizes from './ProductSizes'
 
 const SkuDetailPage = ({ pageContext: { skuId } }) => {
+  const [{ skuSizeSelected }] = useCartContext()
   const { products, skus } = useProductsContext()
   const { isMobile } = useThemeContext()
 
@@ -23,7 +25,7 @@ const SkuDetailPage = ({ pageContext: { skuId } }) => {
   const skuSelected = skus[skuId]
   const productSelected = products[skuSelected.productId]
 
-  const [sizeSelected, setSizeSelected] = useState(skuSelected.attributes.size)
+  const [sizeSelected, setSizeSelected] = useState(skuSizeSelected || productSelected.metadata.defaultSize)
   const skuIdSelectedWithSize = productSelected.skuIds[skuSelected.attributes.color][sizeSelected]
 
   return (
