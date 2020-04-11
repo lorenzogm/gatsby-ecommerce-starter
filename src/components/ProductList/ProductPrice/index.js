@@ -6,7 +6,7 @@ import priceFormat from 'utils/priceFormat'
 
 const ProductPrice = ({ product }) => {
   return (
-    <Typography variant="caption" color="primary">
+    <Typography variant="body2" color="secondary">
       {priceFormat(product.priceDefault)}
     </Typography>
   )

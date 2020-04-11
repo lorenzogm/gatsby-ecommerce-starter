@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 
 const ProductName = ({ product }) => (
-  <Typography variant="caption" component="h3" color="primary">
+  <Typography variant="caption" component="h3">
     {product.name}
   </Typography>
 )
