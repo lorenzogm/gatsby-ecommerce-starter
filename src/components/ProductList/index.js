@@ -25,7 +25,7 @@ const ProductList = ({ filters }) => {
         <GridListTile key={productId}>
           <Link to={`/${skus[products[productId].skuDefaultId].fields.slug}`}>
             <ImageLocal localFiles={products[productId].localFiles} alt={products[productId].name} />
-            <S.ProductDetails isMobile>
+            <S.ProductDetails isMobile={isMobile}>
               <ProductName product={products[productId]} />
               <ProductPrice product={products[productId]} />
             </S.ProductDetails>
