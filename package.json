@@ -1,10 +1,13 @@
 {
-  "name": "gatsby-starter-stripe",
-  "private": true,
-  "description": "A minimal starter to create a storefront with Stripe & Gatsby.",
+  "name": "gatsby-starter-ecommerce",
+  "private": false,
+  "license": "MIT",
+  "description": "Gatsby starter to create an ecommerce website with netlify and stripe.",
   "version": "0.1.0",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "netlify",
+    "stripe"
   ],
   "scripts": {
     "clean": "gatsby clean",
@@ -16,7 +19,9 @@
     "build:app": "gatsby build",
     "build:lambda": "netlify-lambda build -c ./webpack.production.js src/functions",
     "lint": "eslint src",
-    "lint:fix": "eslint --fix src"
+    "lint:fix": "eslint --fix src",
+    "catalog:create": "node ./scripts/createCatalog.js",
+    "catalog:update": "node ./scripts/updateCatalog.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.7",
@@ -46,6 +51,7 @@
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.1",

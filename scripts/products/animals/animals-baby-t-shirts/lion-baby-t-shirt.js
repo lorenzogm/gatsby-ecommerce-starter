@@ -45,6 +45,6 @@ const defaultSku = {
     name: defaultProduct.name,
   },
 }
-const generateProductsAndSkus = require('../../generateProductsAndSkus')
+const generateProductsAndSkus = require('../../../lib/generateProductsAndSkus')
 
 module.exports = generateProductsAndSkus({ defaultProduct, defaultSku, skus })
