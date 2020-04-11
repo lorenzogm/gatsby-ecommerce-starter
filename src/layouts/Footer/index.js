@@ -20,7 +20,6 @@ export default function StickyFooter() {
   return (
     <S.Footer>
       <Container>
-        <Typography variant="body1">Bla bla bla</Typography>
         <Copyright />
       </Container>
     </S.Footer>
