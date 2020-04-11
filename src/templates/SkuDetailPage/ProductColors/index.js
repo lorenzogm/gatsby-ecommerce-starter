@@ -10,17 +10,15 @@ import * as S from './styles'
 
 const ProductColor = ({ productSelected, skus, skuSelected }) => {
   const colorIds = Object.keys(productSelected.skuIds)
+  const { isMobile } = useThemeContext()
 
   if (colorIds.length === 1) {
     return null
   }
 
-  const { isMobile } = useThemeContext()
-  // console.log('selected', skuIdSelected)
-  // console.log(skus[skuIdSelected])
   return (
     <>
-      <Typography component="h4" variant="caption" color="secondary">
+      <Typography component="h4" variant="caption" color="secondary" gutterBottom>
         {`Color: ${colors[skuSelected.attributes.color].name}`}
       </Typography>
       <S.Row>
@@ -29,7 +27,7 @@ const ProductColor = ({ productSelected, skus, skuSelected }) => {
           const sku = skus[skuId]
 
           return (
-            <S.Column key={colorId} selected={skuSelected.id === sku.id} isMobile={isMobile}>
+            <S.Column key={colorId} selected={skuSelected.fields.slug === sku.fields.slug} isMobile={isMobile}>
               <Link to={`/${skus[sku.id].fields.slug}`}>
                 <ImageLocal localFiles={sku.localFiles} alt={sku.fields.slug} />
               </Link>
@@ -51,6 +49,9 @@ ProductColor.propTypes = {
   skuSelected: PropTypes.shape({
     id: PropTypes.string.isRequired,
     attributes: PropTypes.shape({ color: PropTypes.string.isRequired }).isRequired,
+    fields: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
 }
 
