@@ -2,6 +2,8 @@
 
 Gatsby starter to create an ecommerce website with netlify and stripe. Setup and release your shop in a few minutes.
 
+Demo: https://dindim-production.netlify.com/
+
 ## Features
 
 - 100% Free: No subscriptions, just pay a fee to Stripe when you sell a product.
