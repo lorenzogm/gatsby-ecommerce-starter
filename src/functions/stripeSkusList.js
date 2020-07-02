@@ -13,9 +13,6 @@ const stripeSkusList = async ({ skusList }) => {
     starting_after: skusList.length === 0 ? undefined : skusList[skusList.length - 1].id,
   })
 
-  // eslint-disable-next-line no-console
-  console.log(`${skusList.length} skus loaded`)
-
   const skusListNew = [...skusList, ...data]
 
   if (hasMore === false) {

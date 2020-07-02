@@ -1,18 +1,18 @@
 import addToCart from './addToCart'
 import emptyCart from './emptyCart'
-import setSkuQuantity from './setSkuQuantity'
 import removeFromCart from './removeFromCart'
+import setSkuQuantity from './setSkuQuantity'
 import updateSkuSizeSelected from './updateSkuSizeSelected'
 
 const reducer = (state, action) => {
   if (!action.payload) {
     // eslint-disable-next-line no-console
-    console.error(`Undefined "payload" in action ${action.type}`)
+    // console.error(`Undefined "payload" in action ${action.type}`)
     return state
   }
 
   // eslint-disable-next-line no-console
-  console.log('CartContext', { state, action })
+  // console.log('CartContext', { state, action })
 
   switch (action.type) {
     case 'ADD_TO_CART':
