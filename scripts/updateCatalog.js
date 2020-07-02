@@ -3,7 +3,7 @@ const path = require('path')
 // eslint-disable-next-line import/no-extraneous-dependencies
 require('dotenv').config({ path: path.join(__dirname, '../.env.development') })
 
-const stripe = require('stripe')(process.env.REACT_APP_STRIPE_SECRET_KEY)
+const stripe = require('stripe')(process.env.GATSBY_STRIPE_SECRET_KEY)
 
 stripe.setMaxNetworkRetries(2)
 

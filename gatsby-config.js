@@ -56,7 +56,7 @@ module.exports = {
       resolve: 'gatsby-source-stripe',
       options: {
         objects: ['Product', 'Sku'],
-        secretKey: process.env.REACT_APP_STRIPE_SECRET_KEY,
+        secretKey: process.env.GATSBY_STRIPE_SECRET_KEY,
         downloadFiles: true,
         auth: false,
       },
@@ -74,14 +74,14 @@ module.exports = {
       resolve: 'gatsby-plugin-firebase',
       options: {
         credentials: {
-          apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-          appId: process.env.REACT_APP_FIREBASE_APP_ID,
-          authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-          databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-          measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
-          messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-          projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-          storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+          apiKey: process.env.GATSBY_FIREBASE_API_KEY,
+          appId: process.env.GATSBY_FIREBASE_APP_ID,
+          authDomain: process.env.GATSBY_FIREBASE_AUTH_DOMAIN,
+          databaseURL: process.env.GATSBY_FIREBASE_DATABASE_URL,
+          measurementId: process.env.GATSBY_FIREBASE_MEASUREMENT_ID,
+          messagingSenderId: process.env.GATSBY_FIREBASE_MESSAGING_SENDER_ID,
+          projectId: process.env.GATSBY_FIREBASE_PROJECT_ID,
+          storageBucket: process.env.GATSBY_FIREBASE_STORAGE_BUCKET,
         },
         features: {
           analytics: true,
