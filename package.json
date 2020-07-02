@@ -23,7 +23,8 @@
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "catalog:create": "node ./scripts/createCatalog.js",
-    "catalog:update": "node ./scripts/updateCatalog.js"
+    "catalog:update": "node ./scripts/updateCatalog.js",
+    "reset": "rm -rf ./node_modules && yarn install"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.7",
@@ -41,20 +42,26 @@
     "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-offline": "^3.1.2",
     "gatsby-plugin-react-helmet": "^3.2.1",
+    "gatsby-plugin-react-i18next": "^0.0.23",
     "gatsby-plugin-sharp": "^2.5.3",
     "gatsby-plugin-styled-components": "^3.2.1",
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-source-stripe": "^3.0.7",
     "gatsby-transformer-sharp": "^2.4.3",
+    "i18next": "^19.5.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
+    "react-i18next": "^11.7.0",
     "slug": "^2.1.1",
     "stripe": "^8.38.0",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.3",
+    "@babel/plugin-transform-typescript": "^7.10.3",
+    "babel-plugin-i18next-extract": "^0.7.2",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",

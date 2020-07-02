@@ -14,6 +14,8 @@ import SkuPrice from './SkuPrice'
 import ProductName from './ProductName'
 import AddToCartButton from './AddToCartButton'
 import ProductSizes from './ProductSizes'
+import Description from './Description/Description'
+import Delivery from './Delivery/Delivery'
 
 const SkuDetailPage = ({ pageContext: { skuId } }) => {
   const [{ skuSizeSelected }] = useCartContext()
@@ -45,7 +47,9 @@ const SkuDetailPage = ({ pageContext: { skuId } }) => {
           setSizeSelected={setSizeSelected}
         />
         <AddToCartButton skuIdSelectedWithSize={skuIdSelectedWithSize} />
-        {/* <DeliveryConditions /> */}
+        <Delivery />
+        <hr />
+        <Description />
       </S.ProductDetails>
     </S.Main>
   )

@@ -1,12 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
-import sizes from 'constants/sizes'
 import FormSelect from 'components/FormSelect'
+import PropTypes from 'prop-types'
+import React from 'react'
+import sizes from 'constants/sizes'
 import { useCartContext } from 'context/CartContext'
 
 const ProductSizes = ({ productSelected, skuSelected, sizeSelected, setSizeSelected }) => {
-  const [_, dispatch] = useCartContext()
+  const [, dispatch] = useCartContext()
 
   const options = Object.keys(productSelected.skuIds[skuSelected.attributes.color]).map((sizeId) => ({
     key: sizeId,

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Typography from '@material-ui/core/Typography'
+import { useTranslation } from 'react-i18next'
 import colors from 'constants/colors'
 import ImageLocal from 'components/ImageLocal'
 import { useThemeContext } from 'context/ThemeContext'
@@ -9,6 +10,7 @@ import Link from 'components/Link'
 import * as S from './styles'
 
 const ProductColor = ({ productSelected, skus, skuSelected }) => {
+  const { t } = useTranslation()
   const colorIds = Object.keys(productSelected.skuIds)
   const { isMobile } = useThemeContext()
 
@@ -19,7 +21,7 @@ const ProductColor = ({ productSelected, skus, skuSelected }) => {
   return (
     <>
       <Typography component="h4" variant="caption" color="secondary" gutterBottom>
-        {`Color: ${colors[skuSelected.attributes.color].name}`}
+        {`${t('Color')}: ${t(colors[skuSelected.attributes.color].name)}`}
       </Typography>
       <S.Row>
         {colorIds.map((colorId) => {

@@ -3,6 +3,7 @@ import List from '@material-ui/core/List'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import Typography from '@material-ui/core/Typography'
 import DeleteIcon from '@material-ui/icons/Delete'
+import { useTranslation } from 'react-i18next'
 
 import { useCartContext } from 'context/CartContext'
 import { useProductsContext } from 'context/ProductsContext'
@@ -16,6 +17,7 @@ import sizes from 'constants/sizes'
 import * as S from './styles'
 
 const CartList = () => {
+  const { t } = useTranslation()
   const { skus } = useProductsContext()
   const [{ cartSkuList }, dispatch] = useCartContext()
   const { isMobile } = useThemeContext()
@@ -56,13 +58,13 @@ const CartList = () => {
             <div>
               <S.ListItemText
                 primary={sku.attributes.name}
-                secondary={`Color: ${colors[color].name} - Size: ${sizes[category][size].name}`}
+                secondary={`${t('Color')}: ${colors[color].name} - ${t('Size')}: ${sizes[category][size].name}`}
               />
 
               {isMobile && formSelectQuantity}
 
               <Button variant="buttonless" startIcon={<DeleteIcon fontSize="small" />} onClick={onClick}>
-                <Typography variant="caption">Remove</Typography>
+                <Typography variant="caption">{t('Remove')}</Typography>
               </Button>
             </div>
 

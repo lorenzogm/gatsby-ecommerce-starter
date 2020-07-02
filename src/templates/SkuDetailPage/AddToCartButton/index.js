@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import ShoppingCart from '@material-ui/icons/ShoppingCart'
 import Button from '@material-ui/core/Button'
 import { useCartContext } from 'context/CartContext'
@@ -7,6 +8,7 @@ import { useCartContext } from 'context/CartContext'
 import * as S from './styles'
 
 const AddToCartButton = ({ skuIdSelectedWithSize }) => {
+  const { t } = useTranslation()
   const [, dispatch] = useCartContext()
 
   const onClick = () => {
@@ -21,7 +23,7 @@ const AddToCartButton = ({ skuIdSelectedWithSize }) => {
       endIcon={<ShoppingCart style={{ fontSize: 40 }} />}
       onClick={onClick}
     >
-      <S.ButtonText>Add To Cart</S.ButtonText>
+      <S.ButtonText>{t('Add To Cart')}</S.ButtonText>
     </Button>
   )
 }

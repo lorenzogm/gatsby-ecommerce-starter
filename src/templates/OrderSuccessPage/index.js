@@ -2,8 +2,7 @@ import React from 'react'
 import { useCartContext } from 'context/CartContext'
 
 const CartPage = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [_, dispatch] = useCartContext()
+  const [, dispatch] = useCartContext()
 
   React.useEffect(() => {
     dispatch({ type: 'EMPTY_CART', payload: {} })

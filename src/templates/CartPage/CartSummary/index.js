@@ -1,34 +1,35 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 
 import { useCartContext } from 'context/CartContext'
 import { useProductsContext } from 'context/ProductsContext'
-import priceFormat from 'utils/priceFormat'
 
 import * as S from './styles'
-import getCartSubtotal from './getCartSubtotal'
+import getSummaryPrices from './getSummaryPrices'
 import CheckoutButton from './CheckoutButton'
 
 const CartSummary = () => {
+  const { t } = useTranslation()
   const { skus } = useProductsContext()
   const [{ cartSkuList }] = useCartContext()
 
-  const cartSubtotal = getCartSubtotal({ skus, cartSkuList })
+  const { subtotal, delivery, total } = getSummaryPrices({ skus, cartSkuList })
 
   return (
     <>
-      <Typography variant="h5">Total</Typography>
+      <Typography variant="h5">{t('Total')}</Typography>
       <S.Row>
-        <Typography>Subtotal</Typography>
-        <Typography>{priceFormat(cartSubtotal)}</Typography>
+        <Typography>{t('Subtotal')}</Typography>
+        <Typography>{subtotal}</Typography>
       </S.Row>
       <S.Row>
-        <Typography>Delivery</Typography>
-        <Typography>0 €</Typography>
+        <Typography>{t('Delivery')}</Typography>
+        <Typography>{delivery}</Typography>
       </S.Row>
       <S.Row>
-        <Typography>Total (VAT Included)</Typography>
-        <Typography>{priceFormat(cartSubtotal)}</Typography>
+        <Typography>{t('Total (VAT Included)')}</Typography>
+        <Typography>{total}</Typography>
       </S.Row>
       <S.Row>
         <CheckoutButton />
