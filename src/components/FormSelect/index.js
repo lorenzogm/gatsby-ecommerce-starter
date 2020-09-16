@@ -31,13 +31,13 @@ const FormSelect = ({ name, valueSelected, setValueSelected, options }) => {
 
 FormSelect.propTypes = {
   name: PropTypes.string.isRequired,
-  valueSelected: PropTypes.string.isRequired,
+  valueSelected: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   setValueSelected: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      key: PropTypes.string.isRequired,
+      key: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-      name: PropTypes.string.isRequired,
+      name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     }).isRequired,
   ).isRequired,
 }
