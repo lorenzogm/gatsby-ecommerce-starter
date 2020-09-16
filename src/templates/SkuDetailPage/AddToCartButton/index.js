@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 import ShoppingCart from '@material-ui/icons/ShoppingCart'
 import Button from '@material-ui/core/Button'
 import { useCartContext } from 'context/CartContext'

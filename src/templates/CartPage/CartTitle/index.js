@@ -1,8 +1,8 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
 
 import { useCartContext } from 'context/CartContext'
-import { useTranslation } from 'react-i18next'
 
 const CartTitle = () => {
   const { t } = useTranslation()

@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import Typography from '@material-ui/core/Typography'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'gatsby-plugin-react-i18next'
+
 import colors from 'constants/colors'
 import ImageLocal from 'components/ImageLocal'
 import { useThemeContext } from 'context/ThemeContext'
 import Link from 'components/Link'
+
 import * as S from './styles'
 
 const ProductColor = ({ productSelected, skus, skuSelected }) => {
