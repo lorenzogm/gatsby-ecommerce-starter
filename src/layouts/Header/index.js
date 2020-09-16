@@ -3,9 +3,9 @@ import AppBar from '@material-ui/core/AppBar'
 import Container from '@material-ui/core/Container'
 
 import { useThemeContext } from 'context/ThemeContext'
+import Logo from 'components/Logo'
 
 import Cart from './Cart'
-import Logo from './Logo'
 import * as S from './styles'
 import Navigation from './Navigation'
 

@@ -9,12 +9,18 @@ import MenuIcon from '@material-ui/icons/Menu'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { navigate } from 'gatsby'
-import { useTranslation } from 'react-i18next'
+import { useI18next, useTranslation } from 'gatsby-plugin-react-i18next'
+
+import Logo from 'components/Logo'
+
+import { LogoWrapper } from './styles'
 
 const NavigationMobile = ({ navigationItems }) => {
   const { t } = useTranslation()
+  const { languages, changeLanguage } = useI18next()
 
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false)
+
   const onDrawerOpen = () => {
     setIsDrawerOpen(true)
   }
@@ -25,21 +31,37 @@ const NavigationMobile = ({ navigationItems }) => {
 
   const onClickCategory = ({ slug }) => {
     setIsDrawerOpen(false)
-    navigate(slug)
+    navigate(`/${slug}`)
   }
 
   return (
     <>
       <Button variant="buttonless" startIcon={<MenuIcon fontSize="small" />} onClick={onDrawerOpen} />
-      <Drawer anchor="left" open={isDrawerOpen} onClose={onDrawerClose}>
+      <Drawer anchor="top" open={isDrawerOpen} onClose={onDrawerClose}>
+        <LogoWrapper>
+          <Logo />
+        </LogoWrapper>
         <List>
           {navigationItems.map((navigationItem, index) => (
             <div key={navigationItem.slug}>
               {index > 0 && <Divider />}
 
               <ListItem button onClick={() => onClickCategory({ slug: navigationItem.slug })}>
-                <ListItemText primary={t(navigationItem.name)} />
+                <ListItemText primary={navigationItem.name} />
                 <ListItemIcon>{navigationItem.icon}</ListItemIcon>
+              </ListItem>
+            </div>
+          ))}
+        </List>
+
+        <Divider />
+
+        <List>
+          {languages.map((languageCode) => (
+            <div key={languageCode}>
+              <ListItem button onClick={() => changeLanguage(languageCode)}>
+                {languageCode === 'en' && <ListItemText primary={t('English')} />}
+                {languageCode === 'es' && <ListItemText primary={t('Spanish')} />}
               </ListItem>
             </div>
           ))}
