@@ -9,5 +9,5 @@ export const ProductTile = styled(Box_)`
 export const ProductDetails = styled(Box_)`
   padding: ${theme.spacing(1)}px ${theme.spacing(1)}px;
   justify-content: space-between;
-  display: ${({ isMobile }) => (isMobile ? 'block' : 'flex')};
+  display: ${({ $isMobile }) => ($isMobile ? 'block' : 'flex')};
 `

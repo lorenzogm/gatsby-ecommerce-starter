@@ -32,7 +32,7 @@ const SkuDetailPage = ({ pageContext: { skuId } }) => {
 
   return (
     <S.Main>
-      <S.ProductImage isMobile={isMobile}>
+      <S.ProductImage $isMobile={isMobile}>
         <ImageLocal localFiles={skuSelected.localFiles} alt={productSelected.name} />
       </S.ProductImage>
       <S.ProductDetails>

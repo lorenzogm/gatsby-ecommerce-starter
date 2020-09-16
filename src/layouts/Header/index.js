@@ -18,7 +18,7 @@ const Header = () => {
         <Container>
           <S.Toolbar>
             {isMobile && <Navigation variant="MOBILE" />}
-            <S.LogoWrapper isMobile={isMobile}>
+            <S.LogoWrapper $isMobile={isMobile}>
               <Logo />
             </S.LogoWrapper>
             {!isMobile && <Navigation variant="DESKTOP" />}

@@ -11,5 +11,5 @@ export const Toolbar = styled(Toolbar_)`
   padding-right: 0px;
 `
 export const LogoWrapper = styled(Box)`
-  margin-right: ${({ isMobile }) => (isMobile ? `${theme.spacing(0)}px` : `${theme.spacing(4)}px`)};
+  margin-right: ${({ $isMobile }) => ($isMobile ? `${theme.spacing(0)}px` : `${theme.spacing(4)}px`)};
 `

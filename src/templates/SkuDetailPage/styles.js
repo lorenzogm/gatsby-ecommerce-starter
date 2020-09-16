@@ -11,8 +11,8 @@ export const Main = styled(Box)`
 `
 export const ProductImage = styled(Box)`
   flex: 1;
-  margin-bottom: ${({ isMobile }) => (isMobile ? `${theme.spacing(2)}px` : `${theme.spacing(0)}px`)};
-  margin-right: ${({ isMobile }) => (isMobile ? `${theme.spacing(0)}px` : `${theme.spacing(3)}px`)};
+  margin-bottom: ${({ $isMobile }) => ($isMobile ? `${theme.spacing(2)}px` : `${theme.spacing(0)}px`)};
+  margin-right: ${({ $isMobile }) => ($isMobile ? `${theme.spacing(0)}px` : `${theme.spacing(3)}px`)};
 `
 export const ProductDetails = styled(Box)`
   flex: 1;

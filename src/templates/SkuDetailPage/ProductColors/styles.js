@@ -8,7 +8,7 @@ export const Row = styled(Box_)`
 `
 
 export const Column = styled(Box_)`
-  width: ${({ isMobile }) => (isMobile ? '25%' : '10%')};
+  width: ${({ $isMobile }) => ($isMobile ? '25%' : '10%')};
   margin-right: ${theme.spacing(1)}px;
   margin-bottom: ${theme.spacing(2)}px;
   ${({ selected }) => selected && `border-bottom: 2px solid ${theme.palette.secondary.main}`}
