@@ -1,14 +1,11 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
-import { useTranslation } from 'react-i18next'
 
 const ProductName = ({ product }) => {
-  const { t } = useTranslation()
-
   return (
     <Typography variant="caption" component="h3">
-      {t(product.name)}
+      {product.name}
     </Typography>
   )
 }

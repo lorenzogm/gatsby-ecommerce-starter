@@ -15,7 +15,7 @@ const NavigationDesktop = ({ navigationItems }) => {
         <S.NavBarItem key={navBarItem.slug}>
           <Link to={`/${navBarItem.slug}`}>
             <Typography component="h2" variant="button">
-              {t(navBarItem.name)}
+                {navBarItem.name}
             </Typography>
           </Link>
         </S.NavBarItem>

@@ -21,7 +21,7 @@ const ProductColor = ({ productSelected, skus, skuSelected }) => {
   return (
     <>
       <Typography component="h4" variant="caption" color="secondary" gutterBottom>
-        {`${t('Color')}: ${t(colors[skuSelected.attributes.color].name)}`}
+        {`${t('Color')}: ${colors[skuSelected.attributes.color].name}`}
       </Typography>
       <S.Row>
         {colorIds.map((colorId) => {
@@ -29,7 +29,7 @@ const ProductColor = ({ productSelected, skus, skuSelected }) => {
           const sku = skus[skuId]
 
           return (
-            <S.Column key={colorId} selected={skuSelected.fields.slug === sku.fields.slug} isMobile={isMobile}>
+            <S.Column key={colorId} selected={skuSelected.fields.slug === sku.fields.slug} $isMobile={isMobile}>
               <Link to={`/${skus[sku.id].fields.slug}`}>
                 <ImageLocal localFiles={sku.localFiles} alt={sku.fields.slug} />
               </Link>

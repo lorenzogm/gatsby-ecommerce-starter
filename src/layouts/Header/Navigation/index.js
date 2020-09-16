@@ -1,17 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import NavigationDesktop from './NavigationDesktop'
 import NavigationMobile from './NavigationMobile'
 
-const navigationItems = [
-  { slug: 'women', name: 'Women' },
-  { slug: 'men', name: 'Men' },
-  { slug: 'kids', name: 'Kids' },
-  { slug: 'babies', name: 'Babies' },
-]
-
 const Navigation = ({ variant }) => {
+  const { t } = useTranslation()
+
+  const navigationItems = [
+    { slug: 'women', name: t('Women') },
+    { slug: 'men', name: t('Men') },
+    { slug: 'kids', name: t('Kids') },
+    { slug: 'babies', name: t('Babies') },
+  ]
+
   return variant === 'MOBILE' ? (
     <NavigationMobile navigationItems={navigationItems} />
   ) : (
