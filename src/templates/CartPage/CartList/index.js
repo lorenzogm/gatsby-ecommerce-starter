@@ -52,7 +52,7 @@ const CartList = () => {
         return (
           <S.ListItem key={item.skuId}>
             <S.ListItemAvatar>
-              <ImageLocal localFiles={sku.localFiles} alt={name} />
+              <ImageLocal localFiles={sku.localFiles} alt={name || sku.id} />
             </S.ListItemAvatar>
 
             <div>
