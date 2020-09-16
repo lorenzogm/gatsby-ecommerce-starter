@@ -1,5 +1,4 @@
 import firebase_ from 'firebase/app'
-import 'firebase/analytics'
 
 // Firebase web config
 const config = {
