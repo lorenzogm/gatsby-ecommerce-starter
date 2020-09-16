@@ -12,11 +12,12 @@ const Button = ({ children, variant, ...rest }) =>
   )
 
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   variant: PropTypes.oneOf(['buttonless']),
 }
 
 Button.defaultProps = {
+  children: undefined,
   variant: undefined,
 }
 
