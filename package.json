@@ -13,9 +13,8 @@
   ],
   "scripts": {
     "clean": "gatsby clean",
-    "develop": "gatsby develop",
     "start": "run-p start:**",
-    "start:app": "npm run develop",
+    "start:app": "gatsby develop",
     "start:lambda": "netlify-lambda serve -c ./webpack.development.js src/functions",
     "build": "run-p build:**",
     "build:app": "gatsby build",
@@ -24,7 +23,8 @@
     "lint:fix": "eslint --fix src",
     "catalog:create": "node ./scripts/createCatalog.js",
     "catalog:update": "node ./scripts/updateCatalog.js",
-    "reset": "rm -rf ./node_modules && yarn install"
+    "reset": "rm -rf ./node_modules && yarn install",
+    "locales": "yarn run babel --config-file ./babel-extract.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.7",
@@ -88,8 +88,7 @@
   "lint-staged": {
     "*.js": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   }
 }

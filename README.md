@@ -32,6 +32,7 @@ Demo: https://dindim-production.netlify.com/
 - Create the development environment and add the development keys: `touch .env.development`
 - Create the production environment and add the production keys: `touch .env.production`
 - Create your catalog in stripe: `yarn catalog:create`
+- Start the development server: `yarn start`
 
 ## Use your own products
 
