@@ -1,7 +1,7 @@
 const path = require('path')
 const categories = require('../../../constants/categories')
 
-const createCategoryPages = async ({ graphql, createPage }) => {
+module.exports = async function createCategoryPages({ graphql, createPage }) {
   const { errors, data } = await graphql(`
     query categoryList {
       allStripeSku(filter: { product: { active: { eq: true } } }) {
@@ -24,10 +24,8 @@ const createCategoryPages = async ({ graphql, createPage }) => {
   categoriesIdsUnique.forEach((categoryId) => {
     createPage({
       path: categories[categoryId].slug,
-      component: path.resolve('src/templates/CategoryPage/index.js'),
+      component: path.resolve('src/components/templates/CategoryTemplate/CategoryTemplate.js'),
       context: { categoryId },
     })
   })
 }
-
-module.exports = createCategoryPages

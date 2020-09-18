@@ -1,3 +1,3 @@
-import HomePage from '../templates/HomePage'
+import HomePage from 'components/templates/HomeTemplate/HomeTemplate'
 
 export default HomePage
